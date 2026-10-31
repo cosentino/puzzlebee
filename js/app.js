@@ -63,7 +63,8 @@
               disabled: !ready,
               onclick: () => go('#/eta/' + a),
             }, h('b', null, String(a)), h('small', null, ready ? 'anni' : 'presto!'));
-          }))));
+          })),
+        h('div', { class: 'home-offline' }, PB.offlineBadge ? PB.offlineBadge() : null)));
   }
 
   function renderGames(age) {
@@ -215,7 +216,25 @@
 
   route();
 
-  if ('serviceWorker' in navigator && location.protocol === 'https:') {
-    navigator.serviceWorker.register('sw.js').catch(() => { /* offline non disponibile */ });
+  /* ---------- Offline ---------- */
+  let offlineReady = false;
+  function offlineBadge() {
+    return offlineReady ? h('div', { class: 'offline-ok' }, '✈️ Pronto anche senza internet') : null;
+  }
+  PB.offlineBadge = offlineBadge;
+
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => navigator.serviceWorker.ready)
+      .then(() => caches.keys())
+      .then((keys) => (keys.some((k) => k.startsWith('puzzlebee-')) ? caches.open(keys.find((k) => k.startsWith('puzzlebee-'))) : null))
+      .then((c) => (c ? c.match('js/app.js', { ignoreSearch: true }) : null))
+      .then((hit) => {
+        if (!hit) return;
+        offlineReady = true;
+        const home = document.querySelector('.home-offline');
+        if (home) home.replaceChildren(offlineBadge());
+      })
+      .catch(() => { /* offline non disponibile */ });
   }
 })();

@@ -1,5 +1,6 @@
-/* Service worker: rende PuzzleBee giocabile anche offline. Rete prima, cache come riserva. */
-const CACHE = 'puzzlebee-v1';
+/* Service worker: PuzzleBee funziona anche senza rete (es. in aereo).
+   Prima la copia salvata sul dispositivo, poi aggiornamento in background quando c'è rete. */
+const CACHE = 'puzzlebee-v2';
 const FILES = [
   './', 'index.html', 'css/style.css', 'manifest.webmanifest',
   'js/core.js', 'js/app.js',
@@ -21,16 +22,25 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  if (e.request.method !== 'GET') return;
+  const req = e.request;
+  if (req.method !== 'GET') return;
   e.respondWith(
-    fetch(e.request)
-      .then((res) => {
-        if (res.ok && new URL(e.request.url).origin === self.location.origin) {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(e.request, copy));
-        }
-        return res;
-      })
-      .catch(() => caches.match(e.request, { ignoreSearch: true }))
+    caches.open(CACHE).then(async (cache) => {
+      const key = req.mode === 'navigate' ? './' : req;
+      const cached = await cache.match(key, { ignoreSearch: true });
+      const network = fetch(req)
+        .then((res) => {
+          // Salva anche il font di Google (risposta "opaca") per averlo offline.
+          if (res && (res.ok || res.type === 'opaque')) cache.put(key, res.clone());
+          return res;
+        })
+        .catch(() => null);
+      if (cached) {
+        e.waitUntil(network);
+        return cached;
+      }
+      const res = await network;
+      return res || new Response('Offline', { status: 503, statusText: 'Offline' });
+    })
   );
 });

@@ -92,6 +92,9 @@ button:disabled { cursor: default; }
 .age.soon { background: var(--card); opacity: .55; }
 .age:not(.soon):active { transform: translateY(3px); box-shadow: none; }
 
+.home-offline { margin-top: 22px; min-height: 40px; }
+.offline-ok { background: var(--ok-bg); color: var(--ink); border-radius: 999px; padding: 8px 18px; font-size: 18px; font-weight: 600; }
+
 /* ---------- Elenco giochi ---------- */
 .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; max-width: 1000px; margin: 0 auto; }
 .gcard {
