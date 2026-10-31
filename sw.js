@@ -1,6 +1,6 @@
 /* Service worker: PuzzleBee funziona anche senza rete (es. in aereo).
    Prima la copia salvata sul dispositivo, poi aggiornamento in background quando c'è rete. */
-const CACHE = 'puzzlebee-v3';
+const CACHE = 'puzzlebee-v4';
 const FILES = [
   './', 'index.html', 'css/style.css', 'manifest.webmanifest',
   'js/core.js', 'js/app.js',
@@ -8,7 +8,7 @@ const FILES = [
   'js/puzzles/tessere.js', 'js/puzzles/numeri-amici.js', 'js/puzzles/intruso.js', 'js/puzzles/parole.js',
   'js/puzzles/calcoli.js', 'js/puzzles/tabelline.js', 'js/puzzles/negozio.js', 'js/puzzles/orologio.js', 'js/puzzles/in-fila.js', 'js/puzzles/sillabe.js', 'js/puzzles/ortografia.js', 'js/puzzles/articoli.js',
   'js/puzzles/forme.js', 'js/puzzles/simmetria.js', 'js/puzzles/coordinate.js', 'js/puzzles/programma.js', 'js/puzzles/frutti.js', 'js/puzzles/torre.js', 'js/puzzles/ombre.js',
-  'icons/icon.svg', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png',
+  'icons/icon.svg', 'icons/icon-152.png', 'icons/icon-167.png', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png',
 ];
 
 self.addEventListener('install', (e) => {
