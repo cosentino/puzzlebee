@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PuzzleBee</string>
+    <string name="title_activity_main">PuzzleBee</string>
+    <string name="package_name">com.cosentino.puzzlebee</string>
+    <string name="custom_url_scheme">com.cosentino.puzzlebee</string>
+</resources>

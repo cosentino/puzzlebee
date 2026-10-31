@@ -46,7 +46,13 @@ Per ora c'è la fascia **7 anni**: **24 giochi** da 20 livelli ciascuno, divisi 
 
 Ogni livello dà da 1 a 3 stelle in base agli errori e sblocca il successivo. I progressi restano salvati sul dispositivo.
 
-## Giocare su iPad / Android
+## App per gli store
+
+PuzzleBee è pronta per Google Play, App Store (iPhone e iPad), Amazon, Samsung e Huawei: le app native si costruiscono su GitHub, senza computer. La guida passo passo è in **[STORE.md](STORE.md)**.
+
+APK di prova per Android, aggiornato a ogni modifica: https://github.com/cosentino/puzzlebee/releases/tag/android-test
+
+## Giocare su iPad / Android (dal browser)
 
 1. Apri l'indirizzo della pagina (vedi *Pubblicazione* qui sotto) in Safari (iPad) o Chrome (Android).
 2. **iPad:** tasto Condividi → *Aggiungi alla schermata Home*.
@@ -74,6 +80,11 @@ python3 -m http.server 8000
 
 ```
 index.html              pagina unica
+privacy.html            informativa privacy (per gli store)
+fonts/                  font Fredoka incluso (licenza OFL)
+android/, ios/          app native (Capacitor)
+store/                  icone, screenshot e testi per gli store
+scripts/                build per le app e generazione immagini
 css/style.css           stile (tema chiaro e scuro)
 js/core.js              utilità: DOM, numeri casuali, suoni, voce, salvataggi
 js/app.js               schermate, età, livelli, stelle

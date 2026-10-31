@@ -1,0 +1,16 @@
+{
+  "appId": "com.cosentino.puzzlebee",
+  "appName": "PuzzleBee",
+  "webDir": "dist",
+  "backgroundColor": "#fff8e1",
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": false,
+    "webContentsDebuggingEnabled": false
+  },
+  "ios": {
+    "contentInset": "never",
+    "scrollEnabled": false,
+    "backgroundColor": "#fff8e1"
+  }
+}

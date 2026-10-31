@@ -238,7 +238,10 @@
   }
   PB.offlineBadge = offlineBadge;
 
-  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  if (PB.isNative) {
+    // Nell'app degli store tutto è già dentro l'app: niente service worker.
+    offlineReady = false;
+  } else if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     navigator.serviceWorker.register('sw.js')
       .then(() => navigator.serviceWorker.ready)
       .then(() => caches.keys())

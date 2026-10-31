@@ -151,9 +151,19 @@
   };
 
   /* ---------- Voce italiana (se il dispositivo la supporta) ---------- */
+  /* App nativa (Capacitor): su Android il WebView non ha la sintesi vocale, si usa il plugin. */
+  PB.isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+
   PB.say = function (text) {
     try {
-      if (PB.sound.muted || !window.speechSynthesis) return;
+      if (PB.sound.muted) return;
+      const tts = PB.isNative && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech;
+      if (tts) {
+        tts.stop().catch(() => {});
+        tts.speak({ text, lang: 'it-IT', rate: 0.9, category: 'ambient' }).catch(() => {});
+        return;
+      }
+      if (!window.speechSynthesis) return;
       const synth = window.speechSynthesis;
       synth.cancel();
       const u = new SpeechSynthesisUtterance(text);

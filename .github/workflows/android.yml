@@ -1,0 +1,76 @@
+# Costruisce l'app Android.
+# - Sempre: APK di prova, pubblicato nella release "android-test" (da scaricare e installare sul telefono).
+# - Se la chiave di firma è configurata: AAB firmato da caricare su Google Play (artifact "google-play").
+name: App Android
+
+on:
+  push:
+    branches: [main, claude/new-puzzle-game-repo-3jlaj7]
+    paths-ignore: ['store/**', '**.md']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      VERSION_CODE: ${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - run: npm run android
+      - name: Versione e chiave
+        env:
+          PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          echo "VERSION_NAME=$(node -p "require('./package.json').version")" >> "$GITHUB_ENV"
+          if [ -n "$PASS" ] && [ -f android/upload-key.jks.enc ]; then echo "HAS_KEY=true" >> "$GITHUB_ENV"; fi
+
+      - name: APK di prova
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon
+      - name: Pubblica APK di prova
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk PuzzleBee-prova.apk
+          gh release view android-test >/dev/null 2>&1 || gh release create android-test --prerelease \
+            --title "PuzzleBee Android (prova)" \
+            --notes "APK di prova da installare direttamente sul telefono Android. Si aggiorna a ogni modifica."
+          gh release upload android-test PuzzleBee-prova.apk --clobber
+
+      - name: Chiave di firma
+        if: env.HAS_KEY == 'true'
+        env:
+          PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 -pass env:PASS \
+            -in android/upload-key.jks.enc -out "$RUNNER_TEMP/upload-key.jks"
+          echo "ANDROID_KEYSTORE_FILE=$RUNNER_TEMP/upload-key.jks" >> "$GITHUB_ENV"
+      - name: AAB firmato per Google Play
+        if: env.HAS_KEY == 'true'
+        working-directory: android
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: ./gradlew bundleRelease assembleRelease --no-daemon
+      - uses: actions/upload-artifact@v4
+        if: env.HAS_KEY == 'true'
+        with:
+          name: google-play
+          path: |
+            android/app/build/outputs/bundle/release/app-release.aab
+            android/app/build/outputs/apk/release/app-release.apk
