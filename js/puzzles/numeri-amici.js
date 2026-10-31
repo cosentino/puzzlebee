@@ -38,6 +38,7 @@
 
   PB.register({
     id: 'numeri-amici',
+    subject: 'matematica',
     title: 'Numeri amici',
     icon: '🎯',
     color: '#26a69a',

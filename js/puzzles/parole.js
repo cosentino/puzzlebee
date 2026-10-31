@@ -36,6 +36,7 @@
 
   PB.register({
     id: 'parole',
+    subject: 'italiano',
     title: 'Parole in disordine',
     icon: '🔤',
     color: '#ec407a',

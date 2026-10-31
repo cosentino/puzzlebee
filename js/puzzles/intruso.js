@@ -64,6 +64,7 @@
 
   PB.register({
     id: 'intruso',
+    subject: 'logica',
     title: "Trova l'intruso",
     icon: '🔍',
     color: '#5c6bc0',

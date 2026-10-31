@@ -96,6 +96,8 @@ button:disabled { cursor: default; }
 .offline-ok { background: var(--ok-bg); color: var(--ink); border-radius: 999px; padding: 8px 18px; font-size: 18px; font-weight: 600; }
 
 /* ---------- Elenco giochi ---------- */
+.subject { max-width: 1000px; margin: 0 auto 22px; }
+.subject-title { display: flex; align-items: center; gap: 10px; font-size: clamp(22px, 5vw, 30px); margin: 8px 4px 12px; color: var(--honey-d); }
 .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; max-width: 1000px; margin: 0 auto; }
 .gcard {
   display: flex; align-items: center; gap: 14px; text-align: left; padding: 14px;
@@ -244,6 +246,104 @@ button:disabled { cursor: default; }
   background: var(--card); box-shadow: var(--shadow); font-size: clamp(28px, 7vw, 42px); font-weight: 700;
 }
 .letter.used { visibility: hidden; }
+
+/* ---------- Quiz condiviso ---------- */
+.quiz-visual { display: flex; justify-content: center; align-items: center; min-height: 0; max-width: 100%; }
+.quiz-col { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.expr { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: clamp(38px, 10vw, 72px); font-variant-numeric: tabular-nums; }
+.expr.small { font-size: clamp(22px, 5.5vw, 32px); font-weight: 600; color: var(--muted); }
+.expr.word { font-size: clamp(28px, 7vw, 46px); gap: 4px; }
+.hole { display: inline-grid; place-items: center; min-width: 1.4em; padding: 0 .2em; border-radius: 16px; background: var(--sel); color: var(--honey-d); animation: pulse 1.2s ease-in-out infinite; }
+.word-pic.small { font-size: clamp(56px, 14vw, 96px); }
+.options.words .opt, .opt.word { min-width: 0; height: auto; padding: 14px 22px; font-size: clamp(24px, 6vw, 38px); font-weight: 700; letter-spacing: 1px; }
+.opt.pic { font-size: clamp(48px, 12vw, 80px); }
+
+/* Tabelline */
+.groups { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 640px; }
+.group { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; max-width: 132px; padding: 8px; border-radius: 18px; border: 3px dashed var(--honey); font-size: clamp(22px, 5.5vw, 32px); }
+
+/* Orologio */
+.clock { width: min(46vh, 72vw, 300px); height: auto; }
+.clock-face { fill: var(--card); stroke: var(--line); stroke-width: 6; }
+.tick { stroke: var(--muted); stroke-width: 1.5; }
+.tick.big { stroke: var(--line); stroke-width: 3; }
+.clock-num { fill: var(--ink); font-size: 20px; font-weight: 700; text-anchor: middle; font-family: inherit; }
+.hand-h { stroke: #e53935; stroke-width: 9; stroke-linecap: round; }
+.hand-m { stroke: #1e88e5; stroke-width: 5; stroke-linecap: round; }
+.pin { fill: var(--line); }
+
+/* Negozietto */
+.shop { display: flex; align-items: center; gap: 16px; }
+.shop .item { font-size: clamp(64px, 16vw, 104px); }
+.price { background: var(--card); border-radius: 14px; padding: 8px 18px; font-size: clamp(30px, 8vw, 48px); font-weight: 700; box-shadow: var(--shadow); transform: rotate(-4deg); }
+.tray, .wallet { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; max-width: 720px; }
+.tray { min-height: 76px; padding: 8px; border-radius: 20px; background: var(--bg2); width: 100%; }
+.tray-empty { color: var(--muted); font-size: 18px; }
+.money { border: none; font-weight: 700; color: #3e2723; box-shadow: var(--shadow); font-size: 18px; }
+.coin { width: 66px; height: 66px; border-radius: 50%; }
+.c-copper { background: radial-gradient(circle at 35% 30%, #ffccbc, #c56a3b); width: 54px; height: 54px; }
+.c-gold { background: radial-gradient(circle at 35% 30%, #fff3c4, #d4a017); width: 60px; height: 60px; }
+.c-bi { background: radial-gradient(circle, #e8c25a 0 52%, #c9ccd1 53%); }
+.c-bi2 { background: radial-gradient(circle, #c9ccd1 0 52%, #e8c25a 53%); width: 72px; height: 72px; }
+.note { width: 96px; height: 56px; border-radius: 8px; border: 3px solid rgba(255,255,255,.6) !important; }
+.n5 { background: #b0bec5; } .n10 { background: #ef9a9a; } .n20 { background: #90caf9; }
+
+/* Sillabe */
+.slot.syl { width: auto; min-width: clamp(64px, 16vw, 100px); padding: 0 6px; }
+.letter.syl { width: auto; min-width: clamp(64px, 16vw, 96px); padding: 0 12px; font-size: clamp(24px, 6vw, 36px); }
+
+/* Forme */
+.shape-field { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: min(100%, 620px); }
+.shape { aspect-ratio: 1; max-width: 100%; border: none; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); padding: 8%; }
+.shape svg { width: 100%; height: 100%; display: block; }
+.shape.found { background: var(--ok-bg); transform: scale(.92); }
+
+/* Specchio */
+.sym-grid { display: grid; gap: 3px; padding: 6px; border-radius: 14px; background: var(--bg2); }
+.sym-cell { width: var(--s); height: var(--s); border: none; border-radius: 6px; background: var(--card); padding: 0; }
+.sym-cell.model { cursor: default; filter: saturate(.9); }
+.sym-cell.axis-r { box-shadow: 4px 0 0 -1px var(--honey-d); }
+.sym-cell.axis-b { box-shadow: 0 4px 0 -1px var(--honey-d); }
+.sym-cell.wrong { background: var(--bad-bg) !important; }
+.swatch { width: 54px; height: 54px; border-radius: 50%; border: 4px solid transparent; box-shadow: var(--shadow); }
+.swatch.on { border-color: var(--ink); }
+
+/* Caccia al tesoro */
+.coord-grid { display: grid; gap: 4px; }
+.coord-cell { width: var(--s); height: var(--s); border: none; border-radius: 10px; background: var(--card); box-shadow: inset 0 0 0 2px var(--bg2); font-size: calc(var(--s) * .55); padding: 0; }
+.coord-cell.right { background: var(--ok-bg); }
+.coord-label { width: var(--s); height: var(--s); display: grid; place-items: center; font-weight: 700; font-size: calc(var(--s) * .45); color: var(--honey-d); }
+
+/* Programma l'ape */
+.code-grid { display: grid; gap: 4px; padding: 6px; border-radius: 14px; background: #a5d6a7; }
+.code-cell { width: var(--s); height: var(--s); border-radius: 10px; background: #c8e6c9; display: grid; place-items: center; font-size: calc(var(--s) * .6); }
+.code-cell.trail { background: #fff59d; }
+.program { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; min-height: 52px; padding: 6px 10px; border-radius: 16px; background: var(--bg2); width: 100%; max-width: 640px; align-items: center; }
+.pstep { font-size: 28px; padding: 2px; border-radius: 8px; }
+.pstep.on { background: var(--honey); }
+.code-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.code-controls .pbtn { width: 60px; height: 56px; font-size: 28px; }
+.pbtn.go { background: var(--honey); }
+
+/* Frutti misteriosi */
+.eqs { gap: 8px; }
+.eq { display: flex; align-items: center; gap: 8px; font-size: clamp(30px, 7.5vw, 50px); font-weight: 700; }
+.eq .op { color: var(--muted); }
+.eq.ask { margin-top: 6px; }
+
+/* La torre */
+.hanoi { flex: 1; min-height: 0; max-height: 360px; width: 100%; max-width: 760px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.peg { position: relative; border: none; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); display: flex; flex-direction: column-reverse; align-items: center; justify-content: flex-start; padding: 10px 4px 12px; gap: 4px; min-height: 160px; }
+.peg.sel { background: var(--sel); }
+.pole { position: absolute; bottom: 12px; left: 50%; width: 8px; height: 80%; transform: translateX(-50%); background: var(--muted); border-radius: 4px; }
+.flag { position: absolute; top: 6px; right: 10px; font-size: 22px; }
+.disk { position: relative; z-index: 1; height: clamp(18px, 4.5vh, 30px); border-radius: 999px; box-shadow: 0 3px 0 rgba(0,0,0,.25); transition: transform .15s; }
+.disk.lifted { transform: translateY(-14px); }
+
+/* Ombre */
+.shadow { filter: brightness(0); opacity: .78; display: inline-block; }
+.shadow.flip { transform: scaleX(-1); }
+.options.shadows .opt { background: #f5f0e6; }
 
 /* ---------- Vittoria ---------- */
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: grid; place-items: center; padding: 16px; z-index: 10; animation: fade .25s; }

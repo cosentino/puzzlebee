@@ -109,6 +109,8 @@ button:disabled { cursor: default; }
 .offline-ok { background: var(--ok-bg); color: var(--ink); border-radius: 999px; padding: 8px 18px; font-size: 18px; font-weight: 600; }
 
 /* ---------- Elenco giochi ---------- */
+.subject { max-width: 1000px; margin: 0 auto 22px; }
+.subject-title { display: flex; align-items: center; gap: 10px; font-size: clamp(22px, 5vw, 30px); margin: 8px 4px 12px; color: var(--honey-d); }
 .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; max-width: 1000px; margin: 0 auto; }
 .gcard {
   display: flex; align-items: center; gap: 14px; text-align: left; padding: 14px;
@@ -257,6 +259,104 @@ button:disabled { cursor: default; }
   background: var(--card); box-shadow: var(--shadow); font-size: clamp(28px, 7vw, 42px); font-weight: 700;
 }
 .letter.used { visibility: hidden; }
+
+/* ---------- Quiz condiviso ---------- */
+.quiz-visual { display: flex; justify-content: center; align-items: center; min-height: 0; max-width: 100%; }
+.quiz-col { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.expr { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: clamp(38px, 10vw, 72px); font-variant-numeric: tabular-nums; }
+.expr.small { font-size: clamp(22px, 5.5vw, 32px); font-weight: 600; color: var(--muted); }
+.expr.word { font-size: clamp(28px, 7vw, 46px); gap: 4px; }
+.hole { display: inline-grid; place-items: center; min-width: 1.4em; padding: 0 .2em; border-radius: 16px; background: var(--sel); color: var(--honey-d); animation: pulse 1.2s ease-in-out infinite; }
+.word-pic.small { font-size: clamp(56px, 14vw, 96px); }
+.options.words .opt, .opt.word { min-width: 0; height: auto; padding: 14px 22px; font-size: clamp(24px, 6vw, 38px); font-weight: 700; letter-spacing: 1px; }
+.opt.pic { font-size: clamp(48px, 12vw, 80px); }
+
+/* Tabelline */
+.groups { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 640px; }
+.group { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; max-width: 132px; padding: 8px; border-radius: 18px; border: 3px dashed var(--honey); font-size: clamp(22px, 5.5vw, 32px); }
+
+/* Orologio */
+.clock { width: min(46vh, 72vw, 300px); height: auto; }
+.clock-face { fill: var(--card); stroke: var(--line); stroke-width: 6; }
+.tick { stroke: var(--muted); stroke-width: 1.5; }
+.tick.big { stroke: var(--line); stroke-width: 3; }
+.clock-num { fill: var(--ink); font-size: 20px; font-weight: 700; text-anchor: middle; font-family: inherit; }
+.hand-h { stroke: #e53935; stroke-width: 9; stroke-linecap: round; }
+.hand-m { stroke: #1e88e5; stroke-width: 5; stroke-linecap: round; }
+.pin { fill: var(--line); }
+
+/* Negozietto */
+.shop { display: flex; align-items: center; gap: 16px; }
+.shop .item { font-size: clamp(64px, 16vw, 104px); }
+.price { background: var(--card); border-radius: 14px; padding: 8px 18px; font-size: clamp(30px, 8vw, 48px); font-weight: 700; box-shadow: var(--shadow); transform: rotate(-4deg); }
+.tray, .wallet { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; max-width: 720px; }
+.tray { min-height: 76px; padding: 8px; border-radius: 20px; background: var(--bg2); width: 100%; }
+.tray-empty { color: var(--muted); font-size: 18px; }
+.money { border: none; font-weight: 700; color: #3e2723; box-shadow: var(--shadow); font-size: 18px; }
+.coin { width: 66px; height: 66px; border-radius: 50%; }
+.c-copper { background: radial-gradient(circle at 35% 30%, #ffccbc, #c56a3b); width: 54px; height: 54px; }
+.c-gold { background: radial-gradient(circle at 35% 30%, #fff3c4, #d4a017); width: 60px; height: 60px; }
+.c-bi { background: radial-gradient(circle, #e8c25a 0 52%, #c9ccd1 53%); }
+.c-bi2 { background: radial-gradient(circle, #c9ccd1 0 52%, #e8c25a 53%); width: 72px; height: 72px; }
+.note { width: 96px; height: 56px; border-radius: 8px; border: 3px solid rgba(255,255,255,.6) !important; }
+.n5 { background: #b0bec5; } .n10 { background: #ef9a9a; } .n20 { background: #90caf9; }
+
+/* Sillabe */
+.slot.syl { width: auto; min-width: clamp(64px, 16vw, 100px); padding: 0 6px; }
+.letter.syl { width: auto; min-width: clamp(64px, 16vw, 96px); padding: 0 12px; font-size: clamp(24px, 6vw, 36px); }
+
+/* Forme */
+.shape-field { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: min(100%, 620px); }
+.shape { aspect-ratio: 1; max-width: 100%; border: none; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); padding: 8%; }
+.shape svg { width: 100%; height: 100%; display: block; }
+.shape.found { background: var(--ok-bg); transform: scale(.92); }
+
+/* Specchio */
+.sym-grid { display: grid; gap: 3px; padding: 6px; border-radius: 14px; background: var(--bg2); }
+.sym-cell { width: var(--s); height: var(--s); border: none; border-radius: 6px; background: var(--card); padding: 0; }
+.sym-cell.model { cursor: default; filter: saturate(.9); }
+.sym-cell.axis-r { box-shadow: 4px 0 0 -1px var(--honey-d); }
+.sym-cell.axis-b { box-shadow: 0 4px 0 -1px var(--honey-d); }
+.sym-cell.wrong { background: var(--bad-bg) !important; }
+.swatch { width: 54px; height: 54px; border-radius: 50%; border: 4px solid transparent; box-shadow: var(--shadow); }
+.swatch.on { border-color: var(--ink); }
+
+/* Caccia al tesoro */
+.coord-grid { display: grid; gap: 4px; }
+.coord-cell { width: var(--s); height: var(--s); border: none; border-radius: 10px; background: var(--card); box-shadow: inset 0 0 0 2px var(--bg2); font-size: calc(var(--s) * .55); padding: 0; }
+.coord-cell.right { background: var(--ok-bg); }
+.coord-label { width: var(--s); height: var(--s); display: grid; place-items: center; font-weight: 700; font-size: calc(var(--s) * .45); color: var(--honey-d); }
+
+/* Programma l'ape */
+.code-grid { display: grid; gap: 4px; padding: 6px; border-radius: 14px; background: #a5d6a7; }
+.code-cell { width: var(--s); height: var(--s); border-radius: 10px; background: #c8e6c9; display: grid; place-items: center; font-size: calc(var(--s) * .6); }
+.code-cell.trail { background: #fff59d; }
+.program { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; min-height: 52px; padding: 6px 10px; border-radius: 16px; background: var(--bg2); width: 100%; max-width: 640px; align-items: center; }
+.pstep { font-size: 28px; padding: 2px; border-radius: 8px; }
+.pstep.on { background: var(--honey); }
+.code-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.code-controls .pbtn { width: 60px; height: 56px; font-size: 28px; }
+.pbtn.go { background: var(--honey); }
+
+/* Frutti misteriosi */
+.eqs { gap: 8px; }
+.eq { display: flex; align-items: center; gap: 8px; font-size: clamp(30px, 7.5vw, 50px); font-weight: 700; }
+.eq .op { color: var(--muted); }
+.eq.ask { margin-top: 6px; }
+
+/* La torre */
+.hanoi { flex: 1; min-height: 0; max-height: 360px; width: 100%; max-width: 760px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.peg { position: relative; border: none; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); display: flex; flex-direction: column-reverse; align-items: center; justify-content: flex-start; padding: 10px 4px 12px; gap: 4px; min-height: 160px; }
+.peg.sel { background: var(--sel); }
+.pole { position: absolute; bottom: 12px; left: 50%; width: 8px; height: 80%; transform: translateX(-50%); background: var(--muted); border-radius: 4px; }
+.flag { position: absolute; top: 6px; right: 10px; font-size: 22px; }
+.disk { position: relative; z-index: 1; height: clamp(18px, 4.5vh, 30px); border-radius: 999px; box-shadow: 0 3px 0 rgba(0,0,0,.25); transition: transform .15s; }
+.disk.lifted { transform: translateY(-14px); }
+
+/* Ombre */
+.shadow { filter: brightness(0); opacity: .78; display: inline-block; }
+.shadow.flip { transform: scaleX(-1); }
+.options.shadows .opt { background: #f5f0e6; }
 
 /* ---------- Vittoria ---------- */
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: grid; place-items: center; padding: 16px; z-index: 10; animation: fade .25s; }
@@ -463,6 +563,77 @@ button:disabled { cursor: default; }
   };
 })();
 
+/* ---------- Quiz a scelta multipla, condiviso da molti giochi ----------
+   make(level, rng, i) restituisce { prompt, visual, options:[{label, correct, cls}], why, key, optClass } */
+(function () {
+  'use strict';
+  const { h } = PB;
+  PB.quiz = function (root, ctx, opts) {
+    const total = opts.total || 6;
+    let done = 0;
+    const seen = new Set();
+    const prompt = h('div', { class: 'prompt' });
+    const visual = h('div', { class: 'quiz-visual' });
+    const options = h('div', { class: 'options' });
+    const why = h('div', { class: 'why' }, ' ');
+    root.append(h('div', { class: 'game' }, prompt, visual, options, why));
+
+    function next() {
+      ctx.progress(done, total);
+      if (done >= total) return ctx.win();
+      let q;
+      let tries = 0;
+      do { q = opts.make(ctx.level, ctx.rng, done); } while (q.key != null && seen.has(q.key) && ++tries < 40);
+      if (q.key != null) seen.add(q.key);
+      prompt.textContent = q.prompt;
+      visual.replaceChildren(...[].concat(q.visual || []));
+      why.textContent = ' ';
+      options.className = 'options' + (q.optClass ? ' ' + q.optClass : '');
+      let locked = false;
+      options.replaceChildren(...ctx.rng.shuffle(q.options).map((o) => {
+        const b = h('button', {
+          class: 'opt' + (o.cls ? ' ' + o.cls : ''),
+          onclick() {
+            if (locked || b.disabled) return;
+            if (o.correct) {
+              locked = true;
+              b.classList.add('right');
+              ctx.good();
+              if (q.onRight) q.onRight();
+              if (q.why) {
+                why.textContent = q.why;
+                PB.say(q.say || q.why);
+              }
+              done++;
+              setTimeout(next, q.why ? 1900 : 900);
+            } else {
+              b.disabled = true;
+              PB.shake(b);
+              ctx.mistake();
+            }
+          },
+        }, o.label);
+        return b;
+      }));
+    }
+    next();
+  };
+
+  /* Numeri vicini alla risposta, per le scelte sbagliate. */
+  PB.nearNumbers = function (rng, answer, count, min, max, spread) {
+    const out = new Set();
+    const deltas = rng.shuffle([1, -1, 2, -2, 10, -10, 3, -3, 5, -5].concat(spread || []));
+    for (const d of deltas) {
+      const v = answer + d;
+      if (v !== answer && v >= (min == null ? 0 : min) && (max == null || v <= max)) out.add(v);
+      if (out.size >= count) break;
+    }
+    let k = 4;
+    while (out.size < count) { out.add(answer + k); k++; }
+    return [...out];
+  };
+})();
+
 /* Sequenze: "Cosa viene dopo?" — schemi di simboli e successioni di numeri. */
 (function () {
   'use strict';
@@ -538,6 +709,7 @@ button:disabled { cursor: default; }
 
   PB.register({
     id: 'sequenze',
+    subject: 'logica',
     title: 'Cosa viene dopo?',
     icon: '🔮',
     color: '#ab47bc',
@@ -619,6 +791,7 @@ button:disabled { cursor: default; }
 
   PB.register({
     id: 'memory',
+    subject: 'logica',
     title: 'Memory',
     icon: '🃏',
     color: '#29b6f6',
@@ -758,6 +931,7 @@ button:disabled { cursor: default; }
 
   PB.register({
     id: 'sudoku',
+    subject: 'logica',
     title: 'Sudoku',
     icon: '🍓',
     color: '#ef5350',
@@ -893,6 +1067,7 @@ button:disabled { cursor: default; }
 
   PB.register({
     id: 'labirinto',
+    subject: 'logica',
     title: 'Labirinto',
     icon: '🐝',
     color: '#ffa000',
@@ -1054,6 +1229,7 @@ button:disabled { cursor: default; }
 
   PB.register({
     id: 'tessere',
+    subject: 'logica',
     title: 'Tessere',
     icon: '🔢',
     color: '#66bb6a',
@@ -1196,6 +1372,7 @@ button:disabled { cursor: default; }
 
   PB.register({
     id: 'numeri-amici',
+    subject: 'matematica',
     title: 'Numeri amici',
     icon: '🎯',
     color: '#26a69a',
@@ -1363,6 +1540,7 @@ button:disabled { cursor: default; }
 
   PB.register({
     id: 'intruso',
+    subject: 'logica',
     title: "Trova l'intruso",
     icon: '🔍',
     color: '#5c6bc0',
@@ -1451,6 +1629,7 @@ button:disabled { cursor: default; }
 
   PB.register({
     id: 'parole',
+    subject: 'italiano',
     title: 'Parole in disordine',
     icon: '🔤',
     color: '#ec407a',
@@ -1507,6 +1686,1426 @@ button:disabled { cursor: default; }
         }));
       }
       next();
+    },
+  });
+})();
+
+/* Calcoli: addizioni e sottrazioni entro il 10, il 20 e il 100, anche con il numero mancante. */
+(function () {
+  'use strict';
+  const { h } = PB;
+
+  function expr(parts) {
+    return h('div', { class: 'expr' }, parts.map((p) =>
+      h('span', { class: p === '?' ? 'hole' : '' }, String(p))));
+  }
+
+  function make(level, r) {
+    let a, b, op, missing = false;
+    if (level <= 4) {
+      op = r.pick(['+', '-']);
+      if (op === '+') { a = r.int(1, 9); b = r.int(1, 10 - a); } else { a = r.int(2, 10); b = r.int(1, a); }
+    } else if (level <= 8) {
+      op = r.pick(['+', '-']);
+      if (op === '+') { a = r.int(3, 15); b = r.int(2, 20 - a); } else { a = r.int(8, 20); b = r.int(2, a - 1); }
+    } else if (level <= 12) {
+      op = r.pick(['+', '-']);
+      missing = r.chance(0.6);
+      if (op === '+') { a = r.int(2, 15); b = r.int(2, 20 - a); } else { a = r.int(8, 20); b = r.int(2, a - 1); }
+    } else if (level <= 16) {
+      op = r.pick(['+', '-']);
+      const tens = r.chance(0.5);
+      if (op === '+') {
+        if (tens) { a = 10 * r.int(1, 8); b = 10 * r.int(1, 9 - a / 10); } else { a = r.int(2, 8) * 10 + r.int(0, 5); b = r.int(1, 9 - (a % 10)); }
+      } else if (tens) { a = 10 * r.int(2, 9); b = 10 * r.int(1, a / 10 - 1); } else { a = r.int(2, 9) * 10 + r.int(3, 9); b = r.int(1, a % 10); }
+      missing = r.chance(0.25);
+    } else {
+      op = r.pick(['+', '-']);
+      if (op === '+') { a = r.int(11, 69); b = r.int(5, 99 - a); } else { a = r.int(30, 99); b = r.int(5, a - 10); }
+      missing = r.chance(0.4);
+    }
+    const c = op === '+' ? a + b : a - b;
+    let parts, answer;
+    if (missing) {
+      parts = [a, op, '?', '=', c];
+      answer = b;
+    } else {
+      parts = [a, op, b, '=', '?'];
+      answer = c;
+    }
+    const max = level <= 4 ? 10 : level <= 12 ? 20 : 100;
+    const wrong = PB.nearNumbers(r, answer, 3, 0, max);
+    return {
+      key: parts.join(''),
+      prompt: missing ? 'Quale numero manca?' : 'Quanto fa?',
+      visual: expr(parts),
+      options: [{ label: String(answer), correct: true, cls: 'num' }].concat(wrong.map((w) => ({ label: String(w), cls: 'num' }))),
+    };
+  }
+
+  PB.register({
+    id: 'calcoli',
+    subject: 'matematica',
+    title: 'Calcoli veloci',
+    icon: '➕',
+    color: '#42a5f5',
+    desc: 'Addizioni e sottrazioni fino a 100',
+    ages: [7],
+    create(root, ctx) {
+      PB.quiz(root, ctx, { total: 8, make });
+    },
+  });
+})();
+
+/* Tabelline: prima con i gruppi di oggetti da contare, poi le moltiplicazioni. */
+(function () {
+  'use strict';
+  const { h } = PB;
+  const THINGS = ['🍎', '🍓', '⭐', '🐞', '🌸', '🍪', '🐟', '⚽'];
+
+  function make(level, r) {
+    let a, b, visual, prompt, answer, parts;
+    if (level <= 4) {
+      a = r.int(2, level <= 2 ? 3 : 5);
+      b = r.pick([2, 3, 5, 10].filter((x) => x <= (level <= 2 ? 3 : 5) || x === 2));
+      const t = r.pick(THINGS);
+      visual = h('div', { class: 'quiz-col' },
+        h('div', { class: 'groups' }, PB.range(a).map(() =>
+          h('div', { class: 'group' }, PB.range(b).map(() => h('span', null, t))))),
+        h('div', { class: 'expr small' }, `${a} gruppi da ${b}`));
+      prompt = 'Quanti sono in tutto?';
+      answer = a * b;
+    } else {
+      let tables;
+      if (level <= 8) tables = [2, 3, 4, 5, 10];
+      else if (level <= 12) tables = [2, 3, 4, 5, 6, 10];
+      else if (level <= 16) tables = [2, 3, 4, 5, 6, 7, 10];
+      else tables = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+      a = r.pick(tables);
+      b = r.int(level >= 9 ? 0 : 1, 10);
+      if (r.chance(0.5)) [a, b] = [b, a];
+      const missing = level >= 17 && r.chance(0.5) && a > 0 && b > 0;
+      parts = missing ? [a, '×', '?', '=', a * b] : [a, '×', b, '=', '?'];
+      answer = missing ? b : a * b;
+      visual = h('div', { class: 'expr' }, parts.map((p) => h('span', { class: p === '?' ? 'hole' : '' }, String(p))));
+      prompt = missing ? 'Quale numero manca?' : 'Quanto fa?';
+    }
+    const wrong = new Set();
+    // Errori tipici: un gruppo in più o in meno, e numeri vicini.
+    if (a && b) [answer + (parts ? a : b), answer - (parts ? a : b), answer + b, answer - b].forEach((v) => v >= 0 && v !== answer && wrong.add(v));
+    PB.nearNumbers(r, answer, 3, 0, 100).forEach((v) => wrong.add(v));
+    const opts = r.shuffle([...wrong]).slice(0, 3);
+    return {
+      key: `${a}x${b}${parts ? parts.join('') : 'g'}`,
+      prompt,
+      visual,
+      options: [{ label: String(answer), correct: true, cls: 'num' }].concat(opts.map((w) => ({ label: String(w), cls: 'num' }))),
+    };
+  }
+
+  PB.register({
+    id: 'tabelline',
+    subject: 'matematica',
+    title: 'Tabelline',
+    icon: '✖️',
+    color: '#7e57c2',
+    desc: 'Gruppi, moltiplicazioni e tabelline',
+    ages: [7],
+    create(root, ctx) {
+      PB.quiz(root, ctx, { total: 8, make });
+    },
+  });
+})();
+
+/* Il negozietto: paga il prezzo giusto con monete e banconote. */
+(function () {
+  'use strict';
+  const { h } = PB;
+
+  const ITEMS = ['🍦', '🧸', '🎈', '🍫', '📚', '🖍️', '🪀', '⚽', '🍕', '🧃', '🍩', '🎨', '🚗', '🦖', '🎁', '🍎'];
+  // Valori in centesimi.
+  const MONEY = [
+    { v: 10, label: '10 c', kind: 'coin c-copper' },
+    { v: 20, label: '20 c', kind: 'coin c-gold' },
+    { v: 50, label: '50 c', kind: 'coin c-gold' },
+    { v: 100, label: '1 €', kind: 'coin c-bi' },
+    { v: 200, label: '2 €', kind: 'coin c-bi2' },
+    { v: 500, label: '5 €', kind: 'note n5' },
+    { v: 1000, label: '10 €', kind: 'note n10' },
+    { v: 2000, label: '20 €', kind: 'note n20' },
+  ];
+
+  const euro = (c) => (c % 100 ? `${Math.floor(c / 100)},${String(c % 100).padStart(2, '0')} €` : `${c / 100} €`);
+
+  function setup(level, r) {
+    if (level <= 5) return { price: r.int(2, 10) * 100, money: [100, 200, 500] };
+    if (level <= 10) return { price: r.int(5, 20) * 100, money: [100, 200, 500, 1000] };
+    if (level <= 15) return { price: r.int(10, 50) * 100, money: [100, 200, 500, 1000, 2000] };
+    return { price: r.int(2, 20) * 100 + r.pick([10, 20, 30, 40, 50, 60, 70, 80, 90]), money: [10, 20, 50, 100, 200, 500, 1000] };
+  }
+
+  PB.register({
+    id: 'negozio',
+    subject: 'matematica',
+    title: 'Il negozietto',
+    icon: '💶',
+    color: '#9ccc65',
+    desc: 'Paga il prezzo giusto con monete e banconote',
+    ages: [7],
+    create(root, ctx) {
+      const r = ctx.rng;
+      const total = 5;
+      let done = 0;
+      const shop = h('div', { class: 'shop' });
+      const tray = h('div', { class: 'tray' });
+      const sum = h('div', { class: 'sum-line' });
+      const wallet = h('div', { class: 'wallet' });
+      const pay = h('button', { class: 'btn primary' }, 'Paga 👛');
+      const msg = h('div', { class: 'why' }, ' ');
+      root.append(h('div', { class: 'game' }, h('div', { class: 'prompt small' }, 'Metti i soldi giusti e poi paga!'), shop, tray, sum, wallet, pay, msg));
+
+      let price = 0;
+      let paid = [];
+      let locked = false;
+
+      function moneyEl(m, onclick) {
+        return h('button', { class: 'money ' + m.kind, onclick }, m.label);
+      }
+      function refresh() {
+        const s = paid.reduce((a, m) => a + m.v, 0);
+        tray.replaceChildren(...(paid.length ? paid.map((m, i) => moneyEl(m, () => {
+          if (locked) return;
+          paid.splice(i, 1);
+          PB.sound.tap();
+          refresh();
+        })) : [h('span', { class: 'tray-empty' }, 'Tocca i soldi qui sotto')]));
+        sum.textContent = 'Hai messo: ' + euro(s);
+        return s;
+      }
+
+      function next() {
+        ctx.progress(done, total);
+        if (done >= total) return ctx.win();
+        const st = setup(ctx.level, r);
+        price = st.price;
+        paid = [];
+        locked = false;
+        shop.replaceChildren(h('div', { class: 'item' }, r.pick(ITEMS)), h('div', { class: 'price' }, euro(price)));
+        wallet.replaceChildren(...MONEY.filter((m) => st.money.includes(m.v)).map((m) => moneyEl(m, () => {
+          if (locked || paid.length >= 14) return;
+          paid.push(m);
+          PB.sound.tap();
+          refresh();
+        })));
+        msg.textContent = ' ';
+        refresh();
+      }
+
+      pay.addEventListener('click', () => {
+        if (locked) return;
+        const s = paid.reduce((a, m) => a + m.v, 0);
+        if (s === price) {
+          locked = true;
+          ctx.good();
+          msg.textContent = 'Giusto! Grazie e arrivederci! 👋';
+          done++;
+          setTimeout(next, 1400);
+        } else {
+          ctx.mistake();
+          PB.shake(sum);
+          msg.textContent = s > price ? `Troppi soldi: ${euro(s - price)} in più.` : `Mancano ancora ${euro(price - s)}.`;
+        }
+      });
+      next();
+    },
+  });
+})();
+
+/* Che ore sono? Leggere l'orologio a lancette: ore piene, mezze, quarti, poi ogni 5 minuti. */
+(function () {
+  'use strict';
+  const { h } = PB;
+  const NS = 'http://www.w3.org/2000/svg';
+
+  function svg(tag, attrs) {
+    const el = document.createElementNS(NS, tag);
+    for (const k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+
+  function clock(hh, mm) {
+    const s = svg('svg', { viewBox: '0 0 200 200', class: 'clock' });
+    s.append(svg('circle', { cx: 100, cy: 100, r: 94, class: 'clock-face' }));
+    for (let i = 0; i < 60; i++) {
+      const a = (i * 6 * Math.PI) / 180;
+      const r1 = i % 5 ? 86 : 80;
+      s.append(svg('line', {
+        x1: 100 + Math.sin(a) * r1, y1: 100 - Math.cos(a) * r1, x2: 100 + Math.sin(a) * 90, y2: 100 - Math.cos(a) * 90,
+        class: i % 5 ? 'tick' : 'tick big',
+      }));
+    }
+    for (let n = 1; n <= 12; n++) {
+      const a = (n * 30 * Math.PI) / 180;
+      const t = svg('text', { x: 100 + Math.sin(a) * 66, y: 100 - Math.cos(a) * 66 + 7, class: 'clock-num' });
+      t.textContent = n;
+      s.append(t);
+    }
+    const hand = (deg, len, cls) => {
+      const a = (deg * Math.PI) / 180;
+      s.append(svg('line', { x1: 100, y1: 100, x2: 100 + Math.sin(a) * len, y2: 100 - Math.cos(a) * len, class: cls }));
+    };
+    hand(((hh % 12) + mm / 60) * 30, 46, 'hand-h');
+    hand(mm * 6, 72, 'hand-m');
+    s.append(svg('circle', { cx: 100, cy: 100, r: 6, class: 'pin' }));
+    return s;
+  }
+
+  // "al 3" ma "all'8", "sul 3" ma "sull'11".
+  const vowel = (n) => n === 1 || n === 8 || n === 11;
+  const al = (n) => (vowel(n) ? `all'${n}` : `al ${n}`);
+  const sul = (n) => (vowel(n) ? `sull'${n}` : `sul ${n}`);
+
+  const fmt = (hh, mm) => `${hh}:${String(mm).padStart(2, '0')}`;
+
+  function words(hh, mm) {
+    const base = hh === 1 ? "È l'una" : `Sono le ${hh}`;
+    if (mm === 0) return `${base} in punto.`;
+    if (mm === 30) return `${base} e mezza.`;
+    if (mm === 15) return `${base} e un quarto.`;
+    if (mm === 45) return `${base} e tre quarti: manca un quarto d'ora ${hh === 12 ? "all'una" : `alle ${hh + 1}`}.`;
+    return `${base} e ${mm} minuti.`;
+  }
+
+  function make(level, r) {
+    const hh = r.int(1, 12);
+    let mins;
+    if (level <= 6) mins = [0];
+    else if (level <= 12) mins = [0, 30];
+    else if (level <= 16) mins = [0, 15, 30, 45];
+    else mins = PB.range(12).map((i) => i * 5);
+    const mm = r.pick(mins);
+    const right = fmt(hh, mm);
+    const wrong = new Set();
+    const nextH = (x) => ((x - 1 + 12) % 12) + 1;
+    // Errore classico: scambiare le lancette.
+    if (mm % 5 === 0 && mm !== 0) wrong.add(fmt(nextH(mm / 5), hh * 5 === 60 ? 0 : (hh * 5) % 60));
+    wrong.add(fmt(nextH(hh + 1), mm));
+    wrong.add(fmt(nextH(hh - 1), mm));
+    if (mins.length > 1) wrong.add(fmt(hh, r.pick(mins.filter((x) => x !== mm))));
+    wrong.delete(right);
+    const opts = r.shuffle([...wrong]).slice(0, 3);
+    return {
+      key: right,
+      prompt: 'Che ore sono?',
+      visual: clock(hh, mm),
+      why: `Lancetta corta vicino ${al(hh)}, lunga ${sul(mm === 0 ? 12 : mm / 5)}. ${words(hh, mm)}`,
+      say: words(hh, mm),
+      options: [{ label: right, correct: true, cls: 'num' }].concat(opts.map((w) => ({ label: w, cls: 'num' }))),
+    };
+  }
+
+  PB.register({
+    id: 'orologio',
+    subject: 'matematica',
+    title: 'Che ore sono?',
+    icon: '🕒',
+    color: '#26c6da',
+    desc: "Leggi l'orologio con le lancette",
+    ages: [7],
+    create(root, ctx) {
+      PB.quiz(root, ctx, { total: 6, make });
+    },
+  });
+})();
+
+/* In fila! Tocca i numeri dal più piccolo al più grande (o al contrario). */
+(function () {
+  'use strict';
+  const { h } = PB;
+
+  PB.register({
+    id: 'in-fila',
+    subject: 'matematica',
+    title: 'In fila!',
+    icon: '📶',
+    color: '#ffa726',
+    desc: 'Metti in ordine i numeri fino a 100',
+    ages: [7],
+    create(root, ctx) {
+      const r = ctx.rng;
+      const L = ctx.level;
+      const total = 5;
+      let done = 0;
+      const prompt = h('div', { class: 'prompt small' });
+      const line = h('div', { class: 'slots' });
+      const field = h('div', { class: 'bubbles' });
+      root.append(h('div', { class: 'game' }, prompt, line, field));
+
+      function next() {
+        ctx.progress(done, total);
+        if (done >= total) return ctx.win();
+        const count = L <= 5 ? 4 : L <= 10 ? 5 : L <= 15 ? 6 : 7;
+        const max = L <= 3 ? 20 : L <= 8 ? 50 : 100;
+        const desc = L >= 8 && r.chance(0.4);
+        const set = new Set();
+        // Dal livello 12 numeri "che si somigliano" (es. 36, 63, 30, 39).
+        if (L >= 12) {
+          const t = r.int(1, 8), u = r.int(1, 9);
+          [t * 10 + u, u * 10 + t, t * 10, t * 10 + 9].forEach((v) => v <= 99 && set.add(v));
+        }
+        while (set.size < count) set.add(r.int(0, max));
+        const nums = r.shuffle([...set].slice(0, count));
+        const order = nums.slice().sort((a, b) => (desc ? b - a : a - b));
+        prompt.textContent = desc ? 'Dal più GRANDE al più piccolo' : 'Dal più piccolo al più GRANDE';
+        let pos = 0;
+        line.replaceChildren(...order.map(() => h('div', { class: 'slot' })));
+        field.replaceChildren(...nums.map((n) => {
+          const b = h('button', {
+            class: 'bubble',
+            onclick() {
+              if (b.disabled) return;
+              if (n === order[pos]) {
+                b.disabled = true;
+                b.classList.add('pop');
+                line.children[pos].textContent = n;
+                line.children[pos].classList.add('filled');
+                pos++;
+                PB.sound.tap();
+                if (pos === order.length) {
+                  ctx.good();
+                  line.classList.add('done');
+                  done++;
+                  setTimeout(() => { line.classList.remove('done'); next(); }, 1000);
+                }
+              } else {
+                PB.shake(b);
+                ctx.mistake();
+              }
+            },
+          }, String(n));
+          return b;
+        }));
+      }
+      next();
+    },
+  });
+})();
+
+/* Sillabe: componi la parola toccando le sillabe nell'ordine giusto. */
+(function () {
+  'use strict';
+  const { h } = PB;
+
+  const WORDS = [
+    ['CA-SA', '🏠'], ['ME-LA', '🍎'], ['CA-NE', '🐶'], ['SO-LE', '☀️'], ['LU-NA', '🌙'], ['PE-RA', '🍐'],
+    ['NA-VE', '🚢'], ['TO-PO', '🐭'], ['RA-NA', '🐸'], ['RO-SA', '🌹'], ['LU-PO', '🐺'], ['MA-NO', '✋'],
+    ['PA-NE', '🍞'], ['NE-VE', '❄️'], ['GAT-TO', '🐱'], ['PAL-LA', '⚽'], ['MUC-CA', '🐄'], ['PIZ-ZA', '🍕'],
+    ['TOR-TA', '🎂'], ['OR-SO', '🐻'], ['FIO-RE', '🌸'], ['TRE-NO', '🚂'], ['LI-BRO', '📚'], ['PE-SCE', '🐟'],
+    ['CUO-RE', '❤️'], ['ZE-BRA', '🦓'], ['TI-GRE', '🐯'], ['VOL-PE', '🦊'], ['POL-PO', '🐙'], ['FUN-GO', '🍄'],
+    ['RAZ-ZO', '🚀'], ['STEL-LA', '⭐'], ['SCAR-PA', '👟'], ['CHIA-VE', '🔑'],
+    ['NU-VO-LA', '☁️'], ['LI-MO-NE', '🍋'], ['BA-NA-NA', '🍌'], ['MA-IA-LE', '🐷'], ['AL-BE-RO', '🌳'],
+    ['GE-LA-TO', '🍦'], ['CA-RO-TA', '🥕'], ['PE-CO-RA', '🐑'], ['LU-MA-CA', '🐌'], ['BA-LE-NA', '🐳'],
+    ['CA-VAL-LO', '🐴'], ['FRA-GO-LA', '🍓'], ['GI-RAF-FA', '🦒'], ['TAM-BU-RO', '🥁'], ['LE-O-NE', '🦁'],
+    ['PIN-GUI-NO', '🐧'], ['FAR-FAL-LA', '🦋'], ['OM-BREL-LO', '☂️'], ['CO-NI-GLIO', '🐰'], ['CA-STEL-LO', '🏰'],
+    ['CHI-TAR-RA', '🎸'], ['A-NA-NAS', '🍍'],
+    ['E-LE-FAN-TE', '🐘'], ['PO-MO-DO-RO', '🍅'], ['DI-NO-SAU-RO', '🦕'], ['TAR-TA-RU-GA', '🐢'],
+    ['COC-CO-DRIL-LO', '🐊'], ['BI-CI-CLET-TA', '🚲'], ['AR-CO-BA-LE-NO', '🌈'],
+  ].map(([w, e]) => ({ syl: w.split('-'), word: w.replace(/-/g, ''), emoji: e }));
+  const ALL_SYL = [...new Set(WORDS.flatMap((w) => w.syl))];
+
+  function config(level) {
+    if (level <= 5) return { min: 2, max: 2, extra: 0 };
+    if (level <= 10) return { min: 2, max: 3, extra: 1 };
+    if (level <= 15) return { min: 3, max: 3, extra: 2 };
+    return { min: 3, max: 5, extra: 2 };
+  }
+
+  PB.register({
+    id: 'sillabe',
+    subject: 'italiano',
+    title: 'Sillabe',
+    icon: '🗣️',
+    color: '#ff7043',
+    desc: 'Unisci le sillabe e forma la parola',
+    ages: [7],
+    create(root, ctx) {
+      const r = ctx.rng;
+      const cfg = config(ctx.level);
+      const list = r.shuffle(WORDS.filter((w) => w.syl.length >= cfg.min && w.syl.length <= cfg.max)).slice(0, 5);
+      const total = list.length;
+      let done = 0;
+      const pic = h('div', { class: 'word-pic' });
+      const slots = h('div', { class: 'slots' });
+      const tiles = h('div', { class: 'letters' });
+      root.append(h('div', { class: 'game' }, h('div', { class: 'prompt small' }, 'Tocca le sillabe in ordine'), pic, slots, tiles));
+
+      function next() {
+        ctx.progress(done, total);
+        if (done >= total) return ctx.win();
+        const w = list[done];
+        pic.textContent = w.emoji;
+        let pos = 0;
+        slots.replaceChildren(...w.syl.map(() => h('div', { class: 'slot syl' })));
+        const extra = r.shuffle(ALL_SYL.filter((s) => !w.syl.includes(s))).slice(0, cfg.extra);
+        let pieces = w.syl.concat(extra);
+        do { pieces = r.shuffle(pieces); } while (pieces.length > 1 && pieces.join('') === w.word);
+        tiles.replaceChildren(...pieces.map((s) => {
+          const b = h('button', {
+            class: 'letter syl',
+            onclick() {
+              if (b.disabled) return;
+              if (s === w.syl[pos]) {
+                b.disabled = true;
+                b.classList.add('used');
+                slots.children[pos].textContent = s;
+                slots.children[pos].classList.add('filled');
+                pos++;
+                PB.sound.tap();
+                if (pos === w.syl.length) {
+                  ctx.good();
+                  PB.say(w.syl.join(' - ').toLowerCase() + '. ' + w.word.toLowerCase());
+                  slots.classList.add('done');
+                  done++;
+                  setTimeout(() => { slots.classList.remove('done'); next(); }, 1600);
+                }
+              } else {
+                PB.shake(b);
+                ctx.mistake();
+              }
+            },
+          }, s);
+          return b;
+        }));
+      }
+      next();
+    },
+  });
+})();
+
+/* Scrivi giusto: scegli la parola scritta correttamente (doppie, CHI/CI, GHI/GI, GN, GLI, SC, QU/CU). */
+(function () {
+  'use strict';
+  const { h } = PB;
+
+  // [giusta, sbagliata, emoji, regola]
+  const DATA = {
+    doppie: [
+      ['GATTO', 'GATO', '🐱', 'GATTO ha la doppia T.'], ['MUCCA', 'MUCA', '🐄', 'MUCCA ha la doppia C.'],
+      ['PIZZA', 'PIZA', '🍕', 'PIZZA ha la doppia Z.'], ['GALLINA', 'GALINA', '🐔', 'GALLINA ha la doppia L.'],
+      ['CAVALLO', 'CAVALO', '🐴', 'CAVALLO ha la doppia L.'], ['FARFALLA', 'FARFALA', '🦋', 'FARFALLA ha la doppia L.'],
+      ['GIRAFFA', 'GIRAFA', '🦒', 'GIRAFFA ha la doppia F.'], ['STELLA', 'STELA', '⭐', 'STELLA ha la doppia L.'],
+      ['TAZZA', 'TAZA', '☕', 'TAZZA ha la doppia Z.'], ['ZUCCA', 'ZUCA', '🎃', 'ZUCCA ha la doppia C.'],
+      ['BOCCA', 'BOCA', '👄', 'BOCCA ha la doppia C.'], ['PALLA', 'PALA', '⚽', 'Il pallone è la PALLA, con la doppia L.'],
+      ['PATATA', 'PATTATA', '🥔', 'PATATA non ha doppie.'], ['CAROTA', 'CAROTTA', '🥕', 'CAROTA non ha doppie.'],
+      ['MELA', 'MELLA', '🍎', 'MELA non ha doppie.'], ['LUNA', 'LUNNA', '🌙', 'LUNA non ha doppie.'],
+      ['TELEFONO', 'TELLEFONO', '📱', 'TELEFONO non ha doppie.'], ['ORECCHIO', 'ORECHIO', '👂', 'ORECCHIO ha la doppia C.'],
+    ],
+    chi: [
+      ['CHIAVE', 'CIAVE', '🔑', 'Per il suono duro davanti a I si scrive CHI.'],
+      ['CHITARRA', 'CITARRA', '🎸', 'Per il suono duro davanti a I si scrive CHI.'],
+      ['CHIESA', 'CIESA', '⛪', 'Per il suono duro davanti a I si scrive CHI.'],
+      ['CIOCCOLATO', 'CHIOCCOLATO', '🍫', 'Per il suono dolce si scrive CI.'],
+      ['CILIEGIA', 'CHILIEGIA', '🍒', 'Per il suono dolce si scrive CI.'],
+      ['CUCCHIAIO', 'CUCCIAIO', '🥄', 'Per il suono duro davanti a I si scrive CHI.'],
+      ['MACCHINA', 'MACCINA', '🚗', 'Per il suono duro davanti a I si scrive CHI.'],
+      ['CERCHIO', 'CERCIO', '⭕', 'Per il suono duro davanti a I si scrive CHI.'],
+      ['ARANCIA', 'ARANCHIA', '🍊', 'Per il suono dolce si scrive CI.'],
+    ],
+    ghi: [
+      ['GHIACCIO', 'GIACCIO', '🧊', 'Per il suono duro davanti a I si scrive GHI.'],
+      ['FUNGHI', 'FUNGI', '🍄', 'Per il suono duro davanti a I si scrive GHI.'],
+      ['SPAGHETTI', 'SPAGETTI', '🍝', 'Per il suono duro davanti a E si scrive GHE.'],
+      ['GELATO', 'GHELATO', '🍦', 'Per il suono dolce si scrive GE.'],
+      ['GIRAFFA', 'GHIRAFFA', '🦒', 'Per il suono dolce si scrive GI.'],
+    ],
+    gn: [
+      ['RAGNO', 'RANIO', '🕷️', 'RAGNO si scrive con GN.'], ['CIGNO', 'CINIO', '🦢', 'CIGNO si scrive con GN.'],
+      ['BAGNO', 'BANIO', '🛁', 'BAGNO si scrive con GN.'], ['MONTAGNA', 'MONTANIA', '⛰️', 'MONTAGNA si scrive con GN.'],
+      ['SOGNO', 'SONIO', '💤', 'SOGNO si scrive con GN.'],
+    ],
+    gli: [
+      ['CONIGLIO', 'CONILIO', '🐰', 'CONIGLIO si scrive con GLI.'], ['FOGLIA', 'FOLIA', '🍃', 'FOGLIA si scrive con GLI.'],
+      ['BOTTIGLIA', 'BOTTILIA', '🍾', 'BOTTIGLIA si scrive con GLI.'], ['AGLIO', 'ALIO', '🧄', 'AGLIO si scrive con GLI.'],
+      ['FAMIGLIA', 'FAMILIA', '👪', 'FAMIGLIA si scrive con GLI.'], ['MAGLIA', 'MALIA', '👕', 'MAGLIA si scrive con GLI.'],
+    ],
+    sc: [
+      ['PESCE', 'PESCIE', '🐟', 'Davanti a E basta SC: PESCE.'], ['SCIMMIA', 'SCIMIA', '🐒', 'SCIMMIA ha la doppia M.'],
+      ['SCIARPA', 'SCARPIA', '🧣', 'Per il suono dolce davanti ad A si scrive SCIA.'],
+      ['SCUOLA', 'SQUOLA', '🏫', 'SCUOLA si scrive con CU.'],
+    ],
+    qu: [
+      ['QUADERNO', 'CUADERNO', '📓', 'QUADERNO si scrive con QU.'], ['QUADRO', 'CUADRO', '🖼️', 'QUADRO si scrive con QU.'],
+      ['ACQUA', 'AQUA', '💧', 'ACQUA si scrive con CQU.'], ['CUORE', 'QUORE', '❤️', 'CUORE si scrive con CU.'],
+      ['QUATTRO', 'CUATTRO', '4️⃣', 'QUATTRO si scrive con QU.'], ['SQUALO', 'SCUALO', '🦈', 'SQUALO si scrive con QU.'],
+    ],
+  };
+
+  function groups(level) {
+    if (level <= 5) return ['doppie'];
+    if (level <= 10) return ['doppie', 'chi', 'ghi'];
+    if (level <= 15) return ['chi', 'ghi', 'gn', 'gli', 'doppie'];
+    return ['gn', 'gli', 'sc', 'qu', 'chi', 'ghi', 'doppie'];
+  }
+
+  function make(level, r) {
+    const [right, wrong, emoji, rule] = r.pick(DATA[r.pick(groups(level))]);
+    return {
+      key: right,
+      prompt: 'Come si scrive?',
+      visual: h('div', { class: 'word-pic' }, emoji),
+      why: rule,
+      optClass: 'words',
+      options: [{ label: right, correct: true, cls: 'word' }, { label: wrong, cls: 'word' }],
+    };
+  }
+
+  PB.register({
+    id: 'ortografia',
+    subject: 'italiano',
+    title: 'Scrivi giusto',
+    icon: '✏️',
+    color: '#5c6bc0',
+    desc: 'Doppie, CHI e CI, GN, GLI, QU…',
+    ages: [7],
+    create(root, ctx) {
+      PB.quiz(root, ctx, { total: 6, make });
+    },
+  });
+})();
+
+/* Articoli e plurali: due giochi che usano la stessa lista di nomi. */
+(function () {
+  'use strict';
+  const { h } = PB;
+
+  // [singolare, plurale, emoji, genere m/f]
+  const NOUNS = [
+    ['gatto', 'gatti', '🐱', 'm'], ['cane', 'cani', '🐶', 'm'], ['libro', 'libri', '📚', 'm'], ['treno', 'treni', '🚂', 'm'],
+    ['pesce', 'pesci', '🐟', 'm'], ['fiore', 'fiori', '🌸', 'm'], ['fungo', 'funghi', '🍄', 'm'], ['topo', 'topi', '🐭', 'm'],
+    ['zaino', 'zaini', '🎒', 'm'], ['scoiattolo', 'scoiattoli', '🐿️', 'm'], ['squalo', 'squali', '🦈', 'm'],
+    ['scorpione', 'scorpioni', '🦂', 'm'], ['sciatore', 'sciatori', '⛷️', 'm'],
+    ['orso', 'orsi', '🐻', 'm'], ['albero', 'alberi', '🌳', 'm'], ['elefante', 'elefanti', '🐘', 'm'],
+    ['aereo', 'aerei', '✈️', 'm'], ['uovo', 'uova', '🥚', 'm'], ['ombrello', 'ombrelli', '☂️', 'm'],
+    ['zebra', 'zebre', '🦓', 'f'], ['scarpa', 'scarpe', '👟', 'f'], ['stella', 'stelle', '⭐', 'f'],
+    ['zucca', 'zucche', '🎃', 'f'], ['mela', 'mele', '🍎', 'f'], ['casa', 'case', '🏠', 'f'], ['luna', 'lune', '🌙', 'f'],
+    ['palla', 'palle', '⚽', 'f'], ['nave', 'navi', '🚢', 'f'], ['chiave', 'chiavi', '🔑', 'f'],
+    ['ape', 'api', '🐝', 'f'], ['arancia', 'arance', '🍊', 'f'], ['anatra', 'anatre', '🦆', 'f'],
+  ];
+
+  const vowelStart = (w) => /^[aeiou]/.test(w);
+  const special = (w) => /^(z|s[^aeiou]|gn|ps|x|y)/.test(w); // lo / uno / gli
+
+  function articles(noun) {
+    const [sing, , , g] = noun;
+    if (g === 'm') {
+      const det = vowelStart(sing) ? "l'" : special(sing) ? 'lo' : 'il';
+      const ind = special(sing) ? 'uno' : 'un';
+      const pl = vowelStart(sing) || special(sing) ? 'gli' : 'i';
+      return { det, ind, pl: sing === 'uovo' ? 'le' : pl };
+    }
+    return { det: vowelStart(sing) ? "l'" : 'la', ind: vowelStart(sing) ? "un'" : 'una', pl: 'le' };
+  }
+
+  function ruleText(kind, art, noun) {
+    const [sing, , , g] = noun;
+    if (noun[0] === 'uovo' && kind === 'pl') return 'Attenzione: un uovo, ma LE uova!';
+    if (art === "l'" || art === "un'") return `${sing.toUpperCase()} comincia con una vocale.`;
+    if (art === 'lo' || art === 'uno' || (art === 'gli' && special(sing))) return `Davanti a ${sing.startsWith('z') ? 'Z' : 'S + consonante'} si usa ${art.toUpperCase()}.`;
+    if (art === 'gli') return `${sing.toUpperCase()} è maschile e comincia con una vocale: GLI.`;
+    return `${sing.toUpperCase()} è ${g === 'm' ? 'maschile' : 'femminile'}.`;
+  }
+
+  const join = (art, w) => (art.endsWith("'") ? art + w : art + ' ' + w);
+
+  function makeArticle(level, r) {
+    const noun = r.pick(NOUNS);
+    const a = articles(noun);
+    const kind = level <= 7 ? 'det' : level <= 14 ? r.pick(['det', 'pl']) : r.pick(['det', 'pl', 'ind']);
+    const set = { det: ['il', 'lo', 'la', "l'"], pl: ['i', 'gli', 'le'], ind: ['un', 'uno', 'una', "un'"] }[kind];
+    const right = a[kind];
+    const word = kind === 'pl' ? noun[1] : noun[0];
+    const emoji = kind === 'pl' ? noun[2] + noun[2] + noun[2] : noun[2];
+    return {
+      key: kind + noun[0],
+      prompt: 'Quale articolo ci va?',
+      visual: h('div', { class: 'quiz-col' }, h('div', { class: 'word-pic small' }, emoji), h('div', { class: 'expr word' }, h('span', { class: 'hole' }, '?'), ' ' + word.toUpperCase())),
+      why: `${join(right, word).toUpperCase()}. ${ruleText(kind, right, noun)}`,
+      say: join(right, word),
+      optClass: 'words',
+      options: set.map((s) => ({ label: s.toUpperCase(), correct: s === right, cls: 'word' })),
+    };
+  }
+
+  function wrongPlurals(sing, right) {
+    const stem = sing.slice(0, -1);
+    const out = new Set([stem + 'i', stem + 'e', stem + 'a', sing + 's', sing]);
+    if (/c[ao]$|g[ao]$/.test(sing)) { out.add(stem + 'i'); out.add(stem + 'he'); out.add(stem + 'hi'); }
+    out.delete(right);
+    return [...out];
+  }
+
+  function makePlural(level, r) {
+    const noun = r.pick(NOUNS);
+    const toSing = level >= 12 && r.chance(0.4);
+    const a = articles(noun);
+    if (toSing) {
+      const right = noun[0];
+      const wrongs = r.shuffle([noun[1].slice(0, -1) + 'a', noun[1].slice(0, -1) + 'e', noun[1].slice(0, -1) + 'o']
+        .filter((w, i, arr) => w !== right && w !== noun[1] && arr.indexOf(w) === i)).slice(0, 2);
+      return {
+        key: 's' + noun[0],
+        prompt: 'Uno solo: come si dice?',
+        visual: h('div', { class: 'quiz-col' }, h('div', { class: 'word-pic small' }, noun[2] + noun[2] + noun[2]),
+          h('div', { class: 'expr word' }, `${a.pl.toUpperCase()} ${noun[1].toUpperCase()} → ${a.ind.toUpperCase()}${a.ind.endsWith("'") ? '' : ' '}`, h('span', { class: 'hole' }, '?'))),
+        why: `${join(a.ind, noun[0]).toUpperCase()}, ${join(a.pl, noun[1]).toUpperCase()}.`,
+        optClass: 'words',
+        options: [{ label: right.toUpperCase(), correct: true, cls: 'word' }].concat(wrongs.map((w) => ({ label: w.toUpperCase(), cls: 'word' }))),
+      };
+    }
+    const right = noun[1];
+    const wrongs = r.shuffle(wrongPlurals(noun[0], right)).slice(0, level <= 6 ? 1 : 2);
+    return {
+      key: 'p' + noun[0],
+      prompt: 'Tanti: come si dice?',
+      visual: h('div', { class: 'quiz-col' }, h('div', { class: 'word-pic small' }, noun[2]),
+        h('div', { class: 'expr word' }, `${join(a.ind, noun[0]).toUpperCase()} → ${a.pl.toUpperCase()} `, h('span', { class: 'hole' }, '?'))),
+      why: noun[0] === 'uovo' ? 'Un uovo, tante UOVA: è una parola speciale!' : `${join(a.ind, noun[0]).toUpperCase()}, tanti: ${join(a.pl, noun[1]).toUpperCase()}.`,
+      optClass: 'words',
+      options: [{ label: right.toUpperCase(), correct: true, cls: 'word' }].concat(wrongs.map((w) => ({ label: w.toUpperCase(), cls: 'word' }))),
+    };
+  }
+
+  PB.register({
+    id: 'articoli',
+    subject: 'italiano',
+    title: 'Gli articoli',
+    icon: '📝',
+    color: '#26a69a',
+    desc: 'IL, LO, LA, GLI, UN, UNA…',
+    ages: [7],
+    create(root, ctx) {
+      PB.quiz(root, ctx, { total: 6, make: makeArticle });
+    },
+  });
+
+  PB.register({
+    id: 'plurale',
+    subject: 'italiano',
+    title: 'Uno e tanti',
+    icon: '👯',
+    color: '#ab47bc',
+    desc: 'Singolare e plurale',
+    ages: [7],
+    create(root, ctx) {
+      PB.quiz(root, ctx, { total: 6, make: makePlural });
+    },
+  });
+})();
+
+/* Forme: tocca tutte le forme richieste, poi riconoscile dai lati. */
+(function () {
+  'use strict';
+  const { h } = PB;
+  const NS = 'http://www.w3.org/2000/svg';
+  const COLORS = ['#ef5350', '#42a5f5', '#66bb6a', '#ffa726', '#ab47bc', '#26c6da', '#ec407a', '#ffca28'];
+
+  const SHAPES = {
+    cerchio: { plural: 'CERCHI', sides: 0 },
+    ovale: { plural: 'OVALI', sides: 0 },
+    triangolo: { plural: 'TRIANGOLI', sides: 3 },
+    quadrato: { plural: 'QUADRATI', sides: 4 },
+    rettangolo: { plural: 'RETTANGOLI', sides: 4 },
+    rombo: { plural: 'ROMBI', sides: 4 },
+    trapezio: { plural: 'TRAPEZI', sides: 4 },
+    pentagono: { plural: 'PENTAGONI', sides: 5 },
+    esagono: { plural: 'ESAGONI', sides: 6 },
+  };
+
+  function regular(n, r0, rot) {
+    return PB.range(n).map((i) => {
+      const a = rot + (i * 2 * Math.PI) / n;
+      return `${50 + Math.sin(a) * r0},${50 - Math.cos(a) * r0}`;
+    }).join(' ');
+  }
+
+  function shapeSvg(kind, r, color) {
+    const s = document.createElementNS(NS, 'svg');
+    s.setAttribute('viewBox', '0 0 100 100');
+    let el;
+    const mk = (tag, attrs) => {
+      el = document.createElementNS(NS, tag);
+      for (const k in attrs) el.setAttribute(k, attrs[k]);
+    };
+    const free = r() * Math.PI * 2;
+    switch (kind) {
+      case 'cerchio': mk('circle', { cx: 50, cy: 50, r: 30 + r() * 10 }); break;
+      case 'ovale': mk('ellipse', { cx: 50, cy: 50, rx: 40, ry: 22 + r() * 6 }); break;
+      case 'triangolo': {
+        const t = r.int(0, 2);
+        if (t === 0) mk('polygon', { points: regular(3, 40, free) });
+        else if (t === 1) mk('polygon', { points: '15,85 85,85 15,20' }); // rettangolo
+        else mk('polygon', { points: `10,80 90,80 ${r.int(25, 75)},15` });
+        break;
+      }
+      case 'quadrato': { const k = 28 + r() * 10; mk('rect', { x: 50 - k, y: 50 - k, width: 2 * k, height: 2 * k }); break; }
+      case 'rettangolo': mk('rect', { x: 8, y: 28, width: 84, height: 44 }); break;
+      case 'rombo': mk('polygon', { points: '50,6 76,50 50,94 24,50' }); break;
+      case 'trapezio': mk('polygon', { points: `${r.int(22, 34)},25 ${r.int(66, 78)},25 92,78 8,78` }); break;
+      case 'pentagono': mk('polygon', { points: regular(5, 42, r.chance(0.5) ? 0 : free) }); break;
+      case 'esagono': mk('polygon', { points: regular(6, 42, r.chance(0.5) ? 0 : free) }); break;
+      default: break;
+    }
+    el.setAttribute('fill', color);
+    el.setAttribute('stroke', 'rgba(0,0,0,.35)');
+    el.setAttribute('stroke-width', '3');
+    el.setAttribute('stroke-linejoin', 'round');
+    // Quadrati e rettangoli ruotano poco, così non sembrano rombi.
+    const rot = kind === 'quadrato' || kind === 'rettangolo' ? r.int(-12, 12) : kind === 'rombo' ? r.int(-15, 15) : kind === 'trapezio' ? r.pick([0, 0, 180]) : 0;
+    if (rot) el.setAttribute('transform', `rotate(${rot} 50 50)`);
+    s.append(el);
+    return s;
+  }
+
+  function pool(level) {
+    if (level <= 5) return ['cerchio', 'quadrato', 'triangolo', 'rettangolo'];
+    if (level <= 12) return ['cerchio', 'quadrato', 'triangolo', 'rettangolo', 'rombo', 'ovale'];
+    return Object.keys(SHAPES);
+  }
+
+  PB.register({
+    id: 'forme',
+    subject: 'geometria',
+    title: 'Caccia alle forme',
+    icon: '🔺',
+    color: '#ef5350',
+    desc: 'Riconosci triangoli, quadrati, rombi…',
+    ages: [7],
+    create(root, ctx) {
+      const r = ctx.rng;
+      const L = ctx.level;
+      const total = 5;
+      let done = 0;
+      const prompt = h('div', { class: 'prompt small' });
+      const field = h('div', { class: 'shape-field' });
+      root.append(h('div', { class: 'game' }, prompt, field));
+
+      function next() {
+        ctx.progress(done, total);
+        if (done >= total) return ctx.win();
+        const kinds = pool(L);
+        const bySides = L >= 9 && r.chance(0.4);
+        const count = L <= 5 ? 8 : L <= 12 ? 10 : 12;
+        let isTarget, label;
+        if (bySides) {
+          const n = r.pick([3, 4, 5, 6].filter((x) => kinds.some((k) => SHAPES[k].sides === x)));
+          isTarget = (k) => SHAPES[k].sides === n;
+          label = `Tocca tutte le forme con ${n} lati`;
+        } else {
+          const t = r.pick(kinds);
+          isTarget = (k) => k === t;
+          label = `Tocca tutti i ${SHAPES[t].plural}`;
+        }
+        const targets = kinds.filter(isTarget);
+        const others = kinds.filter((k) => !isTarget(k));
+        const nT = r.int(2, Math.min(4, count - 3));
+        const list = r.shuffle(PB.range(count).map((i) => (i < nT ? r.pick(targets) : r.pick(others))));
+        let left = nT;
+        prompt.textContent = label;
+        field.replaceChildren(...list.map((k) => {
+          const b = h('button', {
+            class: 'shape',
+            'aria-label': k,
+            onclick() {
+              if (b.classList.contains('found')) return;
+              if (isTarget(k)) {
+                b.classList.add('found');
+                PB.sound.pop();
+                left--;
+                if (left === 0) {
+                  ctx.good();
+                  done++;
+                  setTimeout(next, 900);
+                }
+              } else {
+                PB.shake(b);
+                ctx.mistake();
+              }
+            },
+          }, shapeSvg(k, r, r.pick(COLORS)));
+          return b;
+        }));
+      }
+      next();
+    },
+  });
+})();
+
+/* Specchio: completa il disegno simmetrico colorando le caselle dall'altra parte. */
+(function () {
+  'use strict';
+  const { h } = PB;
+  const PALETTE = ['#ef5350', '#42a5f5', '#ffca28'];
+
+  PB.register({
+    id: 'simmetria',
+    subject: 'geometria',
+    title: 'Specchio',
+    icon: '🦋',
+    color: '#ec407a',
+    desc: 'Completa il disegno simmetrico',
+    ages: [7],
+    create(root, ctx) {
+      const r = ctx.rng;
+      const L = ctx.level;
+      const half = L <= 5 ? 3 : L <= 12 ? 4 : 5; // colonne (o righe) di ogni metà
+      const other = L <= 5 ? 4 : L <= 12 ? 5 : 6;
+      const vertical = L < 8 || r.chance(0.6); // asse verticale (sinistra → destra)
+      const rows = vertical ? other : half * 2;
+      const cols = vertical ? half * 2 : other;
+      const nColors = L <= 10 ? 1 : L <= 15 ? 2 : 3;
+      const grid = new Array(rows * cols).fill(-1);
+      const idx = (y, x) => y * cols + x;
+      const mirror = (y, x) => (vertical ? [y, cols - 1 - x] : [rows - 1 - y, x]);
+      const isModel = (y, x) => (vertical ? x < half : y < half);
+
+      // Disegno casuale nella metà modello, almeno qualche casella.
+      let filled = 0;
+      while (filled < 3) {
+        filled = 0;
+        grid.fill(-1);
+        for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+          if (isModel(y, x) && r.chance(0.4)) { grid[idx(y, x)] = r.int(0, nColors - 1); filled++; }
+        }
+      }
+      const target = grid.slice();
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        if (isModel(y, x) && grid[idx(y, x)] >= 0) {
+          const [my, mx] = mirror(y, x);
+          target[idx(my, mx)] = grid[idx(y, x)];
+        }
+      }
+      let need = filled;
+      let color = 0;
+
+      const board = h('div', { class: 'sym-grid' + (vertical ? ' v' : ' h'), style: `grid-template-columns: repeat(${cols}, var(--s))` });
+      const cells = [];
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        const model = isModel(y, x);
+        const v = grid[idx(y, x)];
+        let cls = 'sym-cell' + (model ? ' model' : '');
+        if (vertical && x === half - 1) cls += ' axis-r';
+        if (!vertical && y === half - 1) cls += ' axis-b';
+        const c = h('button', { class: cls, style: v >= 0 ? `background:${PALETTE[v]}` : '', onclick: () => tap(y, x) });
+        cells.push(c);
+        board.append(c);
+      }
+      const wrap = h('div', { class: 'board-wrap' }, board);
+      const swatches = nColors > 1 ? h('div', { class: 'palette' }, PB.range(nColors).map((i) =>
+        h('button', { class: 'swatch' + (i === 0 ? ' on' : ''), style: `background:${PALETTE[i]}`, onclick(e) {
+          color = i;
+          [...e.currentTarget.parentNode.children].forEach((b, k) => b.classList.toggle('on', k === i));
+        } }))) : null;
+      root.append(h('div', { class: 'game' }, h('div', { class: 'prompt small' }, vertical ? 'Colora a destra come nello specchio' : 'Colora sotto come nello specchio'), wrap, swatches));
+
+      function tap(y, x) {
+        if (isModel(y, x)) return;
+        const i = idx(y, x);
+        if (grid[i] >= 0) return;
+        if (target[i] === color) {
+          grid[i] = color;
+          cells[i].style.background = PALETTE[color];
+          cells[i].classList.add('ok');
+          PB.sound.tap();
+          need--;
+          ctx.progress(filled - need, filled);
+          if (need === 0) ctx.win();
+        } else {
+          PB.shake(cells[i]);
+          cells[i].classList.add('wrong');
+          setTimeout(() => cells[i].classList.remove('wrong'), 450);
+          ctx.mistake();
+        }
+      }
+
+      function layout() {
+        board.style.setProperty('--s', PB.fitCell(wrap, cols, rows, 3, 80) + 'px');
+      }
+      layout();
+      ctx.onResize(layout);
+      ctx.progress(0, filled);
+    },
+  });
+})();
+
+/* Caccia al tesoro: caselle con lettere e numeri (es. B3), come sul quaderno a quadretti. */
+(function () {
+  'use strict';
+  const { h } = PB;
+  const LETTERS = 'ABCDEF';
+  const THINGS = ['🍎', '⭐', '🐞', '🌸', '🍄', '🐟', '🎈', '🍪', '🐸', '🦋'];
+
+  PB.register({
+    id: 'coordinate',
+    subject: 'geometria',
+    title: 'Caccia al tesoro',
+    icon: '🗺️',
+    color: '#8d6e63',
+    desc: 'Trova le caselle con lettere e numeri',
+    ages: [7],
+    create(root, ctx) {
+      const r = ctx.rng;
+      const L = ctx.level;
+      const n = L <= 6 ? 4 : L <= 12 ? 5 : 6;
+      const total = 6;
+      let done = 0;
+      const prompt = h('div', { class: 'prompt small' });
+      const board = h('div', { class: 'coord-grid', style: `grid-template-columns: repeat(${n + 1}, var(--s))` });
+      const wrap = h('div', { class: 'board-wrap' }, board);
+      const answers = h('div', { class: 'options' });
+      root.append(h('div', { class: 'game' }, prompt, wrap, answers));
+      const name = (x, y) => LETTERS[x] + (y + 1);
+
+      function next() {
+        ctx.progress(done, total);
+        if (done >= total) return ctx.win();
+        // Tipo: 'tocca' (tocca la casella B3) oppure 'dove' (dov'è la mela?).
+        const type = L <= 4 ? 'tocca' : r.pick(['tocca', 'dove']);
+        const items = new Map();
+        const nItems = type === 'dove' ? r.int(3, Math.min(5, n)) : r.int(0, 3);
+        const things = r.shuffle(THINGS);
+        while (items.size < nItems) items.set(r.int(0, n * n - 1), things[items.size]);
+        const goal = type === 'dove' ? [...items.keys()][0] : r.int(0, n * n - 1);
+        const gx = goal % n;
+        const gy = Math.floor(goal / n);
+        let locked = false;
+
+        // Righe dal numero più alto in alto (come un grafico) fino a 1 in basso.
+        board.replaceChildren();
+        for (let row = n - 1; row >= 0; row--) {
+          board.append(h('div', { class: 'coord-label' }, String(row + 1)));
+          for (let x = 0; x < n; x++) {
+            const i = row * n + x;
+            const c = h('button', {
+              class: 'coord-cell',
+              onclick() {
+                if (type !== 'tocca' || locked) return;
+                if (i === goal) {
+                  locked = true;
+                  c.classList.add('right');
+                  c.textContent = '💎';
+                  ctx.good();
+                  done++;
+                  setTimeout(next, 900);
+                } else {
+                  PB.shake(c);
+                  ctx.mistake();
+                }
+              },
+            }, items.get(i) || '');
+            board.append(c);
+          }
+        }
+        board.append(h('div', { class: 'coord-label' }));
+        for (let x = 0; x < n; x++) board.append(h('div', { class: 'coord-label' }, LETTERS[x]));
+
+        if (type === 'tocca') {
+          prompt.textContent = `Il tesoro è nella casella ${name(gx, gy)}: toccala!`;
+          answers.replaceChildren();
+        } else {
+          prompt.textContent = `In quale casella c'è ${items.get(goal)}?`;
+          const wrong = new Set();
+          [[gy, gx], [gx + 1, gy], [gx - 1, gy], [gx, gy + 1], [gx, gy - 1], [r.int(0, n - 1), r.int(0, n - 1)]]
+            .forEach(([x, y]) => { if (x >= 0 && y >= 0 && x < n && y < n && !(x === gx && y === gy)) wrong.add(name(x, y)); });
+          const opts = r.shuffle([name(gx, gy)].concat(r.shuffle([...wrong]).slice(0, 3)));
+          answers.replaceChildren(...opts.map((o) => {
+            const b = h('button', {
+              class: 'opt num',
+              onclick() {
+                if (locked || b.disabled) return;
+                if (o === name(gx, gy)) {
+                  locked = true;
+                  b.classList.add('right');
+                  ctx.good();
+                  done++;
+                  setTimeout(next, 900);
+                } else {
+                  b.disabled = true;
+                  PB.shake(b);
+                  ctx.mistake();
+                }
+              },
+            }, o);
+            return b;
+          }));
+        }
+        layout();
+      }
+
+      function layout() {
+        board.style.setProperty('--s', PB.fitCell(wrap, n + 1, n + 1, 4, 84) + 'px');
+      }
+      ctx.onResize(layout);
+      next();
+    },
+  });
+})();
+
+/* Programma l'ape: prepara la lista di frecce e poi premi Via. Primo approccio al coding. */
+(function () {
+  'use strict';
+  const { h } = PB;
+  const DIRS = { U: [0, -1, '⬆️'], D: [0, 1, '⬇️'], L: [-1, 0, '⬅️'], R: [1, 0, '➡️'] };
+  const OBST = ['🌵', '🪨', '🌳'];
+
+  function bfs(n, blocked, start, goal) {
+    const dist = new Array(n * n).fill(-1);
+    dist[start] = 0;
+    const q = [start];
+    while (q.length) {
+      const c = q.shift();
+      for (const k in DIRS) {
+        const x = (c % n) + DIRS[k][0];
+        const y = Math.floor(c / n) + DIRS[k][1];
+        if (x < 0 || y < 0 || x >= n || y >= n) continue;
+        const nc = y * n + x;
+        if (blocked.has(nc) || dist[nc] >= 0) continue;
+        dist[nc] = dist[c] + 1;
+        q.push(nc);
+      }
+    }
+    return dist[goal];
+  }
+
+  PB.register({
+    id: 'programma',
+    subject: 'logica',
+    title: "Programma l'ape",
+    icon: '🤖',
+    color: '#78909c',
+    desc: "Scegli le frecce e guida l'ape al fiore",
+    ages: [7],
+    create(root, ctx) {
+      const r = ctx.rng;
+      const L = ctx.level;
+      const n = L <= 6 ? 4 : L <= 13 ? 5 : 6;
+      const [minLen, maxLen] = L <= 3 ? [2, 3] : L <= 6 ? [3, 5] : L <= 10 ? [4, 6] : L <= 15 ? [5, 8] : [7, 10];
+      const nObst = L <= 3 ? 1 : L <= 8 ? 3 : L <= 14 ? 5 : 7;
+      const obstEmoji = OBST[0];
+
+      let start, goal, blocked, best;
+      for (let tries = 0; tries < 500; tries++) {
+        start = r.int(0, n * n - 1);
+        goal = r.int(0, n * n - 1);
+        if (goal === start) continue;
+        blocked = new Set();
+        while (blocked.size < nObst) {
+          const c = r.int(0, n * n - 1);
+          if (c !== start && c !== goal) blocked.add(c);
+        }
+        best = bfs(n, blocked, start, goal);
+        if (best >= minLen && best <= maxLen) break;
+      }
+      if (!(best >= 1)) { // caso rarissimo: niente ostacoli
+        blocked = new Set();
+        best = bfs(n, blocked, start, goal);
+      }
+      const maxProg = best + 4;
+
+      let program = [];
+      let running = false;
+      let bee = start;
+      const board = h('div', { class: 'code-grid', style: `grid-template-columns: repeat(${n}, var(--s))` });
+      const cells = PB.range(n * n).map(() => h('div', { class: 'code-cell' }));
+      board.append(...cells);
+      const wrap = h('div', { class: 'board-wrap' }, board);
+      const progEl = h('div', { class: 'program' });
+      const msg = h('div', { class: 'why' }, ' ');
+      const btn = (k) => h('button', { class: 'pbtn', onclick: () => add(k) }, DIRS[k][2]);
+      const controls = h('div', { class: 'code-controls' },
+        btn('U'), btn('D'), btn('L'), btn('R'),
+        h('button', { class: 'pbtn', 'aria-label': 'Cancella', onclick: undo }, '⌫'),
+        h('button', { class: 'pbtn go', onclick: run }, '▶️'));
+      root.append(h('div', { class: 'game' },
+        h('div', { class: 'prompt small' }, `Porta l'ape al fiore 🌻 in ${best} mosse o poco più`), wrap, progEl, controls, msg));
+
+      function draw(trail) {
+        cells.forEach((c, i) => {
+          c.textContent = i === bee ? '🐝' : i === goal ? '🌻' : blocked.has(i) ? obstEmoji : '';
+          c.classList.toggle('trail', !!(trail && trail.has(i)));
+          c.classList.toggle('block', blocked.has(i));
+        });
+      }
+      function drawProg(active) {
+        progEl.replaceChildren(...(program.length
+          ? program.map((k, i) => h('span', { class: 'pstep' + (i === active ? ' on' : '') }, DIRS[k][2]))
+          : [h('span', { class: 'tray-empty' }, 'Tocca le frecce qui sotto')]));
+      }
+      function add(k) {
+        if (running || program.length >= maxProg) return;
+        program.push(k);
+        PB.sound.tap();
+        drawProg();
+      }
+      function undo() {
+        if (running) return;
+        program.pop();
+        drawProg();
+      }
+      function run() {
+        if (running || !program.length) return;
+        running = true;
+        msg.textContent = ' ';
+        bee = start;
+        const trail = new Set([start]);
+        let i = 0;
+        const stepFn = () => {
+          if (i >= program.length) {
+            running = false;
+            if (bee === goal) {
+              const stars = program.length <= best ? 3 : 2;
+              msg.textContent = 'Evviva, il fiore! 🌻';
+              ctx.win(ctx.mistakesCount() === 0 ? stars : ctx.mistakesCount() <= 2 ? Math.min(stars, 2) : 1);
+            } else {
+              fail('L’ape non è arrivata al fiore. Riprova!');
+            }
+            return;
+          }
+          const [dx, dy] = DIRS[program[i]];
+          const x = (bee % n) + dx;
+          const y = Math.floor(bee / n) + dy;
+          drawProg(i);
+          if (x < 0 || y < 0 || x >= n || y >= n || blocked.has(y * n + x)) {
+            running = false;
+            fail(x < 0 || y < 0 || x >= n || y >= n ? 'Ops! L’ape è uscita dal prato.' : 'Ops! C’è un ostacolo.');
+            return;
+          }
+          bee = y * n + x;
+          trail.add(bee);
+          PB.sound.tap();
+          draw(trail);
+          i++;
+          setTimeout(stepFn, 380);
+        };
+        stepFn();
+      }
+      function fail(text) {
+        ctx.mistake();
+        msg.textContent = text;
+        PB.shake(board);
+        setTimeout(() => {
+          bee = start;
+          draw();
+          drawProg();
+        }, 900);
+      }
+
+      function layout() {
+        board.style.setProperty('--s', PB.fitCell(wrap, n, n, 4, 90) + 'px');
+      }
+      draw();
+      drawProg();
+      layout();
+      ctx.onResize(layout);
+    },
+  });
+})();
+
+/* Frutti misteriosi: ogni frutto vale un numero. Scoprilo dalle somme. */
+(function () {
+  'use strict';
+  const { h } = PB;
+  const FRUITS = ['🍎', '🍌', '🍇', '🍓', '🍊', '🍐', '🍒', '🍉'];
+
+  function line(terms, result) {
+    const parts = [];
+    terms.forEach((t, i) => {
+      if (i) parts.push(h('span', { class: 'op' }, '+'));
+      parts.push(h('span', { class: 'fruit' }, t));
+    });
+    parts.push(h('span', { class: 'op' }, '='));
+    parts.push(h('span', { class: result === '?' ? 'hole' : 'res' }, String(result)));
+    return h('div', { class: 'eq' }, parts);
+  }
+
+  function make(level, r) {
+    const nUnknown = level <= 6 ? 1 : level <= 13 ? 2 : 3;
+    const maxV = level <= 6 ? 5 : level <= 13 ? 8 : 10;
+    const f = r.shuffle(FRUITS).slice(0, nUnknown);
+    const val = f.map(() => r.int(1, maxV));
+    const lines = [];
+    // Prima riga: il primo frutto ripetuto (2 o 3 volte) così si può scoprire.
+    const rep = level <= 3 ? 2 : r.int(2, 3);
+    lines.push(line(PB.range(rep).map(() => f[0]), rep * val[0]));
+    for (let k = 1; k < nUnknown; k++) {
+      // Ogni riga aggiunge un frutto nuovo insieme a uno già noto.
+      const known = r.int(0, k - 1);
+      lines.push(line(r.shuffle([f[known], f[k]]), val[known] + val[k]));
+    }
+    let answer;
+    let ask;
+    const askSum = level >= 10 && r.chance(0.4);
+    if (askSum) {
+      const a = r.int(0, nUnknown - 1);
+      const b = r.int(0, nUnknown - 1);
+      ask = line([f[a], f[b], f[0]].slice(0, nUnknown >= 2 ? 3 : 2), '?');
+      answer = val[a] + val[b] + (nUnknown >= 2 ? val[0] : 0);
+    } else {
+      const k = nUnknown - 1;
+      ask = h('div', { class: 'eq ask' }, h('span', { class: 'fruit' }, f[k]), h('span', { class: 'op' }, '='), h('span', { class: 'hole' }, '?'));
+      answer = val[k];
+    }
+    const wrong = PB.nearNumbers(r, answer, 3, 0, 40);
+    const exp = f.map((x, i) => `${x} = ${val[i]}`).join(', ');
+    return {
+      key: f.join('') + val.join(','),
+      prompt: 'Quanto vale?',
+      visual: h('div', { class: 'quiz-col eqs' }, lines, ask),
+      why: `Giusto! ${exp}`,
+      say: 'Giusto!',
+      options: [{ label: String(answer), correct: true, cls: 'num' }].concat(wrong.map((w) => ({ label: String(w), cls: 'num' }))),
+    };
+  }
+
+  PB.register({
+    id: 'frutti',
+    subject: 'logica',
+    title: 'Frutti misteriosi',
+    icon: '🍌',
+    color: '#ffca28',
+    desc: 'Ogni frutto vale un numero: scoprilo!',
+    ages: [7],
+    create(root, ctx) {
+      PB.quiz(root, ctx, { total: 5, make });
+    },
+  });
+})();
+
+/* La torre: sposta tutti i dischi sul palo di destra. Mai un disco grande sopra uno piccolo. */
+(function () {
+  'use strict';
+  const { h } = PB;
+  const COLORS = ['#ef5350', '#ffa726', '#ffca28', '#66bb6a', '#42a5f5', '#7e57c2'];
+
+  PB.register({
+    id: 'torre',
+    subject: 'logica',
+    title: 'La torre',
+    icon: '🗼',
+    color: '#5c6bc0',
+    desc: 'Sposta la torre sul palo di destra',
+    ages: [7],
+    create(root, ctx) {
+      const L = ctx.level;
+      const n = L <= 3 ? 2 : L <= 9 ? 3 : L <= 16 ? 4 : 5;
+      const best = Math.pow(2, n) - 1;
+      const pegs = [PB.range(n).map((i) => n - i), [], []]; // dal basso: n..1
+      let held = -1;
+      let moves = 0;
+      let done = false;
+
+      const counter = h('span', { class: 'counter' }, `Mosse: 0 (le migliori: ${best})`);
+      const area = h('div', { class: 'hanoi' });
+      const pegEls = PB.range(3).map((p) => {
+        const el = h('button', { class: 'peg' + (p === 2 ? ' goal' : ''), onclick: () => tap(p) });
+        area.append(el);
+        return el;
+      });
+      root.append(h('div', { class: 'game' },
+        h('div', { class: 'prompt small' }, 'Sposta tutta la torre sul palo con la bandierina 🚩'), counter, area,
+        h('div', { class: 'why' }, 'Un disco alla volta. Mai un disco grande sopra uno piccolo!')));
+
+      function render() {
+        pegEls.forEach((el, p) => {
+          el.replaceChildren(h('div', { class: 'pole' }), ...(p === 2 ? [h('div', { class: 'flag' }, '🚩')] : []),
+            ...pegs[p].map((d, i) => h('div', {
+              class: 'disk' + (held === p && i === pegs[p].length - 1 ? ' lifted' : ''),
+              style: `width:${30 + (d / n) * 65}%;background:${COLORS[(d - 1) % COLORS.length]}`,
+            })));
+          el.classList.toggle('sel', held === p);
+        });
+      }
+
+      function tap(p) {
+        if (done) return;
+        if (held < 0) {
+          if (!pegs[p].length) return;
+          held = p;
+          PB.sound.tap();
+        } else if (held === p) {
+          held = -1;
+        } else {
+          const d = pegs[held][pegs[held].length - 1];
+          const top = pegs[p][pegs[p].length - 1];
+          if (top && top < d) {
+            PB.shake(pegEls[p]);
+            ctx.mistake();
+            return;
+          }
+          pegs[p].push(pegs[held].pop());
+          held = -1;
+          moves++;
+          PB.sound.tap();
+          counter.textContent = `Mosse: ${moves} (le migliori: ${best})`;
+          if (pegs[2].length === n) {
+            done = true;
+            render();
+            const stars = moves <= best ? 3 : moves <= best * 1.6 ? 2 : 1;
+            return ctx.win(ctx.mistakesCount() > 2 ? Math.min(stars, 2) : stars);
+          }
+        }
+        render();
+      }
+      render();
+    },
+  });
+})();
+
+/* Le ombre: quale ombra appartiene alla figura? */
+(function () {
+  'use strict';
+  const { h } = PB;
+
+  // Gruppi di figure con sagome diverse ma "parenti" (più difficili da distinguere).
+  const GROUPS = [
+    ['🐶', '🐱', '🐰', '🐭', '🐻', '🐷'],
+    ['🦁', '🐘', '🦒', '🦓', '🦏', '🐊'],
+    ['🐄', '🐖', '🐑', '🐓', '🐐', '🐴'],
+    ['🐟', '🐙', '🦀', '🐬', '🐳', '🦈'],
+    ['🍎', '🍌', '🍇', '🍓', '🍐', '🍒', '🍍'],
+    ['🚗', '🚲', '🚂', '✈️', '🚁', '⛵', '🚀'],
+    ['🎸', '🎺', '🥁', '🎻', '🎹'],
+    ['🐝', '🦋', '🐞', '🐌', '🕷️', '🐜'],
+    ['🌵', '🌳', '🌴', '🍄', '🌻', '🌷'],
+  ];
+
+  function make(level, r) {
+    const nOpts = level <= 6 ? 3 : 4;
+    let pool;
+    if (level <= 6) pool = r.shuffle(GROUPS.flat());
+    else pool = r.shuffle(r.pick(GROUPS)); // stessa famiglia: più difficile
+    const items = pool.slice(0, nOpts);
+    const answer = items[0];
+    const reverse = level >= 12 && r.chance(0.5); // mostra l'ombra e chiedi la figura
+    const flip = level >= 16 ? ' flip' : '';
+    return {
+      key: answer,
+      prompt: reverse ? 'Di chi è questa ombra?' : 'Qual è la sua ombra?',
+      visual: h('div', { class: 'word-pic' + (reverse ? ' shadow' + flip : '') }, answer),
+      optClass: 'shadows',
+      options: items.map((it) => ({ label: h('span', { class: reverse ? '' : 'shadow' + flip }, it), correct: it === answer, cls: 'pic' })),
+    };
+  }
+
+  PB.register({
+    id: 'ombre',
+    subject: 'logica',
+    title: 'Le ombre',
+    icon: '👤',
+    color: '#607d8b',
+    desc: 'Trova l’ombra giusta',
+    ages: [7],
+    create(root, ctx) {
+      PB.quiz(root, ctx, { total: 6, make });
     },
   });
 })();
@@ -1580,22 +3179,36 @@ button:disabled { cursor: default; }
         h('div', { class: 'home-offline' }, PB.offlineBadge ? PB.offlineBadge() : null)));
   }
 
+  const SUBJECTS = [
+    { id: 'matematica', label: 'Matematica', icon: '➕' },
+    { id: 'italiano', label: 'Italiano', icon: '📖' },
+    { id: 'geometria', label: 'Geometria', icon: '📐' },
+    { id: 'logica', label: 'Logica', icon: '🧠' },
+  ];
+
+  function gameCard(age, g) {
+    const got = store.gameTotal(age, g.id);
+    return h('button', { class: 'gcard', style: `--c:${g.color}`, onclick: () => go(`#/eta/${age}/gioco/${g.id}`) },
+      h('div', { class: 'gicon' }, g.icon),
+      h('div', { class: 'gtext' },
+        h('b', null, g.title),
+        h('small', null, g.desc),
+        h('div', { class: 'bar' }, h('i', { style: `width:${(got / (LEVELS * 3)) * 100}%` })),
+        h('small', { class: 'gstars' }, `★ ${got} / ${LEVELS * 3}`)));
+  }
+
   function renderGames(age) {
     const games = gamesFor(age);
     show(
       topbar(`${age} anni`, '#/'),
       h('div', { class: 'scroll' },
-        h('div', { class: 'games' },
-          games.map((g) => {
-            const got = store.gameTotal(age, g.id);
-            return h('button', { class: 'gcard', style: `--c:${g.color}`, onclick: () => go(`#/eta/${age}/gioco/${g.id}`) },
-              h('div', { class: 'gicon' }, g.icon),
-              h('div', { class: 'gtext' },
-                h('b', null, g.title),
-                h('small', null, g.desc),
-                h('div', { class: 'bar' }, h('i', { style: `width:${(got / (LEVELS * 3)) * 100}%` })),
-                h('small', { class: 'gstars' }, `★ ${got} / ${LEVELS * 3}`)));
-          }))));
+        SUBJECTS.map((sub) => {
+          const list = games.filter((g) => (g.subject || 'logica') === sub.id);
+          if (!list.length) return null;
+          return h('section', { class: 'subject' },
+            h('h2', { class: 'subject-title' }, h('span', null, sub.icon), sub.label),
+            h('div', { class: 'games' }, list.map((g) => gameCard(age, g))));
+        })));
   }
 
   function renderLevels(age, game) {
@@ -1629,6 +3242,7 @@ button:disabled { cursor: default; }
       level: lvl,
       levels: LEVELS,
       rng: PB.makeRng((Math.random() * 4294967296) >>> 0),
+      mistakesCount: () => mistakes,
       mistake() {
         mistakes++;
         PB.sound.bad();

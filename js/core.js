@@ -165,3 +165,74 @@
     } catch (e) { /* ignorato */ }
   };
 })();
+
+/* ---------- Quiz a scelta multipla, condiviso da molti giochi ----------
+   make(level, rng, i) restituisce { prompt, visual, options:[{label, correct, cls}], why, key, optClass } */
+(function () {
+  'use strict';
+  const { h } = PB;
+  PB.quiz = function (root, ctx, opts) {
+    const total = opts.total || 6;
+    let done = 0;
+    const seen = new Set();
+    const prompt = h('div', { class: 'prompt' });
+    const visual = h('div', { class: 'quiz-visual' });
+    const options = h('div', { class: 'options' });
+    const why = h('div', { class: 'why' }, ' ');
+    root.append(h('div', { class: 'game' }, prompt, visual, options, why));
+
+    function next() {
+      ctx.progress(done, total);
+      if (done >= total) return ctx.win();
+      let q;
+      let tries = 0;
+      do { q = opts.make(ctx.level, ctx.rng, done); } while (q.key != null && seen.has(q.key) && ++tries < 40);
+      if (q.key != null) seen.add(q.key);
+      prompt.textContent = q.prompt;
+      visual.replaceChildren(...[].concat(q.visual || []));
+      why.textContent = ' ';
+      options.className = 'options' + (q.optClass ? ' ' + q.optClass : '');
+      let locked = false;
+      options.replaceChildren(...ctx.rng.shuffle(q.options).map((o) => {
+        const b = h('button', {
+          class: 'opt' + (o.cls ? ' ' + o.cls : ''),
+          onclick() {
+            if (locked || b.disabled) return;
+            if (o.correct) {
+              locked = true;
+              b.classList.add('right');
+              ctx.good();
+              if (q.onRight) q.onRight();
+              if (q.why) {
+                why.textContent = q.why;
+                PB.say(q.say || q.why);
+              }
+              done++;
+              setTimeout(next, q.why ? 1900 : 900);
+            } else {
+              b.disabled = true;
+              PB.shake(b);
+              ctx.mistake();
+            }
+          },
+        }, o.label);
+        return b;
+      }));
+    }
+    next();
+  };
+
+  /* Numeri vicini alla risposta, per le scelte sbagliate. */
+  PB.nearNumbers = function (rng, answer, count, min, max, spread) {
+    const out = new Set();
+    const deltas = rng.shuffle([1, -1, 2, -2, 10, -10, 3, -3, 5, -5].concat(spread || []));
+    for (const d of deltas) {
+      const v = answer + d;
+      if (v !== answer && v >= (min == null ? 0 : min) && (max == null || v <= max)) out.add(v);
+      if (out.size >= count) break;
+    }
+    let k = 4;
+    while (out.size < count) { out.add(answer + k); k++; }
+    return [...out];
+  };
+})();

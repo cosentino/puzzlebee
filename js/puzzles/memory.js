@@ -24,6 +24,7 @@
 
   PB.register({
     id: 'memory',
+    subject: 'logica',
     title: 'Memory',
     icon: '🃏',
     color: '#29b6f6',

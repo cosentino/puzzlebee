@@ -73,6 +73,7 @@
 
   PB.register({
     id: 'sequenze',
+    subject: 'logica',
     title: 'Cosa viene dopo?',
     icon: '🔮',
     color: '#ab47bc',

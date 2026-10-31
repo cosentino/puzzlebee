@@ -66,6 +66,7 @@
 
   PB.register({
     id: 'sudoku',
+    subject: 'logica',
     title: 'Sudoku',
     icon: '🍓',
     color: '#ef5350',

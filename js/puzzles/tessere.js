@@ -7,6 +7,7 @@
 
   PB.register({
     id: 'tessere',
+    subject: 'logica',
     title: 'Tessere',
     icon: '🔢',
     color: '#66bb6a',

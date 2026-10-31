@@ -34,6 +34,7 @@
 
   PB.register({
     id: 'labirinto',
+    subject: 'logica',
     title: 'Labirinto',
     icon: '🐝',
     color: '#ffa000',

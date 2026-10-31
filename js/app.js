@@ -67,22 +67,36 @@
         h('div', { class: 'home-offline' }, PB.offlineBadge ? PB.offlineBadge() : null)));
   }
 
+  const SUBJECTS = [
+    { id: 'matematica', label: 'Matematica', icon: '➕' },
+    { id: 'italiano', label: 'Italiano', icon: '📖' },
+    { id: 'geometria', label: 'Geometria', icon: '📐' },
+    { id: 'logica', label: 'Logica', icon: '🧠' },
+  ];
+
+  function gameCard(age, g) {
+    const got = store.gameTotal(age, g.id);
+    return h('button', { class: 'gcard', style: `--c:${g.color}`, onclick: () => go(`#/eta/${age}/gioco/${g.id}`) },
+      h('div', { class: 'gicon' }, g.icon),
+      h('div', { class: 'gtext' },
+        h('b', null, g.title),
+        h('small', null, g.desc),
+        h('div', { class: 'bar' }, h('i', { style: `width:${(got / (LEVELS * 3)) * 100}%` })),
+        h('small', { class: 'gstars' }, `★ ${got} / ${LEVELS * 3}`)));
+  }
+
   function renderGames(age) {
     const games = gamesFor(age);
     show(
       topbar(`${age} anni`, '#/'),
       h('div', { class: 'scroll' },
-        h('div', { class: 'games' },
-          games.map((g) => {
-            const got = store.gameTotal(age, g.id);
-            return h('button', { class: 'gcard', style: `--c:${g.color}`, onclick: () => go(`#/eta/${age}/gioco/${g.id}`) },
-              h('div', { class: 'gicon' }, g.icon),
-              h('div', { class: 'gtext' },
-                h('b', null, g.title),
-                h('small', null, g.desc),
-                h('div', { class: 'bar' }, h('i', { style: `width:${(got / (LEVELS * 3)) * 100}%` })),
-                h('small', { class: 'gstars' }, `★ ${got} / ${LEVELS * 3}`)));
-          }))));
+        SUBJECTS.map((sub) => {
+          const list = games.filter((g) => (g.subject || 'logica') === sub.id);
+          if (!list.length) return null;
+          return h('section', { class: 'subject' },
+            h('h2', { class: 'subject-title' }, h('span', null, sub.icon), sub.label),
+            h('div', { class: 'games' }, list.map((g) => gameCard(age, g))));
+        })));
   }
 
   function renderLevels(age, game) {
@@ -116,6 +130,7 @@
       level: lvl,
       levels: LEVELS,
       rng: PB.makeRng((Math.random() * 4294967296) >>> 0),
+      mistakesCount: () => mistakes,
       mistake() {
         mistakes++;
         PB.sound.bad();
